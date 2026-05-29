@@ -32,12 +32,12 @@ import { Footer } from "@/components/layout/footer"
 
 // Complete Help Center Mock Data Database
 const helpCategories = [
-  { id: "getting-started", title: "Getting Started", desc: "Learn how to use CoverPilot to find premium quotes.", count: 4, icon: Users },
+  { id: "getting-started", title: "Getting Started", desc: "Learn how to use CoverPilot to find coverage fits.", count: 4, icon: Users },
   { id: "insurance-basics", title: "Car Insurance Basics", desc: "Understanding policy types, jargon, and voluntary excess.", count: 5, icon: Car },
   { id: "quotes", title: "Quotes & Comparison", desc: "Technical details about our live API calculations.", count: 4, icon: Search },
   { id: "policy-mgmt", title: "Policy Management", desc: "Updating, canceling, or altering your covered vehicles.", count: 3, icon: ShieldCheck },
   { id: "claims", title: "Claims & Accidents", desc: "What to do in the event of an accident or direct claims.", count: 3, icon: HelpCircle },
-  { id: "billing", title: "Payments & Billing", desc: "Understanding direct debit, monthly premium financing, and deposits.", count: 3, icon: Percent },
+  { id: "policy-basics", title: "Policy & Excess Basics", desc: "Understanding policy types, excess, and voluntary parameters.", count: 3, icon: Sliders },
   { id: "renewals", title: "Renewals", desc: "How to compare quotes prior to your automatic policy renewal.", count: 3, icon: Clock },
   { id: "account", title: "Account Support", desc: "Resetting passwords, security keys, and data deletion.", count: 2, icon: FileCheck },
 ]
@@ -47,7 +47,7 @@ const helpArticles = [
     id: "art-1",
     category: "quotes",
     question: "How does CoverPilot compare quotes?",
-    answer: "CoverPilot connects directly via enterprise developer APIs to the real-time underwriting systems of over 50 leading UK insurers. When you submit your parameters, we securely pass them to each provider's rating engine. Within 5 seconds, they send back customized binding premium quotes which we sort and display side-by-side without any added broker markup.",
+    answer: "CoverPilot connects directly via enterprise developer APIs to the real-time underwriting systems of over 50 leading UK insurers. When you submit your parameters, we securely pass them to each provider's rating engine. Within 5 seconds, they send back customized binding policy options which we sort and display side-by-side without any added broker markup.",
     related: ["voluntary-excess", "ncd-protection"],
     helpfulCount: 312,
   },
@@ -55,7 +55,7 @@ const helpArticles = [
     id: "art-2",
     category: "getting-started",
     question: "How long does it take to get insured?",
-    answer: "Using our modern comparison engine, it takes less than 2 minutes to fill out vehicle and driver details. Once you select a quote, you can complete payment and get covered instantly. Your certificate of motor insurance is generated as a secure digital PDF and emailed to you immediately, letting you drive away covered.",
+    answer: "Using our modern comparison engine, it takes less than 2 minutes to fill out vehicle and driver details. Once you select a quote, you can complete and get covered instantly. Your certificate of motor insurance is generated as a secure digital PDF and emailed to you immediately, letting you drive away covered.",
     related: ["what-info-needed", "direct-payment"],
     helpfulCount: 420,
   },
@@ -63,15 +63,15 @@ const helpArticles = [
     id: "art-3",
     category: "policy-mgmt",
     question: "Can I compare multiple vehicles on one quote?",
-    answer: "Currently, our primary consumer flow is optimized for single-vehicle comprehensive quotes. If you have multiple cars in your household, we recommend comparing them individually first to find the best single-policy rates, or contacting our support desk to inquire about specialized multi-car partner discounts.",
+    answer: "Currently, our primary consumer flow is optimized for single-vehicle comprehensive quotes. If you have multiple cars in your household, we recommend comparing them individually first to find the best single-policy coverage, or contacting our support desk to inquire about specialized multi-car partner discounts.",
     related: ["policy-cancellation", "voluntary-excess"],
     helpfulCount: 189,
   },
   {
     id: "art-4",
     category: "quotes",
-    question: "How are my insurance savings calculated?",
-    answer: "Savings are calculated by subtracting the lowest quote found on CoverPilot from your current auto-renewal premium (which you input during our compare process). Our database tracks average market rates and underwriting updates to ensure savings reflect real, verified financial reductions.",
+    question: "How is my Coverage Fit Score calculated?",
+    answer: "The Coverage Fit Score is calculated by evaluating your specific driver age, vehicle grouping risk levels, and optional cover selections against standard underwriting guidelines. Our algorithm dynamically rates the alignment of each insurer's policy terms with your profile to yield a percentage score from 60% to 99%.",
     related: ["ncd-protection", "voluntary-excess"],
     helpfulCount: 295,
   },
@@ -79,7 +79,7 @@ const helpArticles = [
     id: "art-5",
     category: "policy-mgmt",
     question: "Can I switch providers mid-policy?",
-    answer: "Yes, you can. In the UK, you have the legal right to cancel an existing car insurance policy at any time. If you find a cheaper rate on CoverPilot, you can lock it in. Note that your previous insurer may charge a mid-term cancellation fee (usually £30-£55), so we recommend calculating if your new savings exceed this charge.",
+    answer: "Yes, you can. In the UK, you have the legal right to cancel an existing car insurance policy at any time. If you find a better coverage alignment on CoverPilot, you can switch. Note that your previous insurer may charge a mid-term cancellation fee (usually £30-£55), so we recommend checking if your new policy perks outweigh this charge.",
     related: ["policy-cancellation", "direct-payment"],
     helpfulCount: 154,
   },
@@ -94,8 +94,8 @@ const helpArticles = [
   {
     id: "art-7",
     category: "insurance-basics",
-    question: "What is Voluntary Excess and how does it affect my premium?",
-    answer: "Voluntary excess is the sum you agree to pay out-of-pocket in the event of an insurance claim. This is added to the insurer's compulsory excess. Choosing a higher voluntary excess (e.g. £250 or £500) reduces the insurer's liability, which in turn reduces your monthly or annual premium rate.",
+    question: "What is Voluntary Excess and how does it affect my policy terms?",
+    answer: "Voluntary excess is the sum you agree to pay out-of-pocket in the event of an insurance claim. This is added to the insurer's compulsory excess. Choosing a higher voluntary excess (e.g. £250 or £500) reduces the insurer's liability, which in turn optimizes your policy acceptance and terms.",
     related: ["voluntary-excess", "ncd-protection"],
     helpfulCount: 398,
   },
@@ -208,7 +208,7 @@ export default function HelpCenter() {
               className="flex flex-wrap gap-2.5 justify-center pt-3 text-xs font-semibold text-slate-500"
             >
               <span className="self-center">Popular:</span>
-              {["Getting Started", "Quotes", "Claims", "Coverage", "Renewals", "Billing"].map((tag) => (
+              {["Getting Started", "Quotes", "Claims", "Coverage", "Renewals", "Excess"].map((tag) => (
                 <button
                   key={tag}
                   onClick={() => setSearchQuery(tag)}
@@ -315,8 +315,8 @@ export default function HelpCenter() {
                     <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Customer score</div>
                   </div>
                   <div className="pt-4 border-l border-slate-800 pl-4">
-                    <div className="text-xl font-black text-white">£42M+</div>
-                    <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Total Savings</div>
+                    <div className="text-xl font-black text-white">45k+</div>
+                    <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Matched Policies</div>
                   </div>
                 </div>
               </div>

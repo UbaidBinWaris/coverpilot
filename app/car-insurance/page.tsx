@@ -62,19 +62,19 @@ const levels = [
   },
 ]
 
-const premiumFactors = [
-  { factor: "Age & Driving Experience", impact: "High", desc: "Drivers under 25 statistically have higher claim rates, placing them in higher risk categories. Rates steadily decline with experience." },
-  { factor: "No Claims Discount (NCD)", impact: "Critical", desc: "Accumulating years of claim-free driving is the most powerful discount factor, saving up to 60% on comprehensive premiums." },
+const matchFactors = [
+  { factor: "Age & Driving Experience", impact: "High", desc: "Drivers under 25 statistically have higher claim rates, placing them in higher risk categories. Eligibility and options steadily expand with experience." },
+  { factor: "No Claims Discount (NCD)", impact: "Critical", desc: "Accumulating years of claim-free driving is the most powerful rating factor, maximizing your eligibility and coverage options." },
   { factor: "Vehicle Insurance Group", impact: "High", desc: "Vehicles are classified into groups 1 to 50 based on engine size, replacement parts costs, safety features, and initial purchase value." },
-  { factor: "Annual Mileage", impact: "Medium", desc: "Fewer miles on the road directly translates to lower underwriting risk. Commuter usage typically adds moderate cost." },
-  { factor: "Postal Code (Location)", impact: "Medium", desc: "Areas with high vehicle theft records, traffic congestion, or localized flood risks generally carry higher base rates." },
+  { factor: "Annual Mileage", impact: "Medium", desc: "Fewer miles on the road directly translates to lower underwriting risk. Commuter usage typically adds moderate complexity to underwriting." },
+  { factor: "Postal Code (Location)", impact: "Medium", desc: "Areas with high vehicle theft records, traffic congestion, or localized flood risks generally require more specific security exclusions." },
 ]
 
-const savingTips = [
-  { title: "Optimize Voluntary Excess", desc: "Raising your voluntary excess from £150 to £250 or £500 lowers the insurer's liability, resulting in an immediate 10-15% discount on annual premiums." },
-  { title: "Accurately Estimate Mileage", desc: "Overestimating your mileage adds unnecessary cost. Look at past MOT certificates to calculate a precise annual figure." },
-  { title: "Install Approved Security", desc: "Thatcham-approved immobilizers, trackers, or locking wheel nuts decrease security risk groups, saving you money." },
-  { title: "Park Safely Overnight", desc: "Parking on a private driveway or locked garage instead of a public road lowers theft risks, decreasing underwritten premiums." },
+const eligibilityTips = [
+  { title: "Optimize Voluntary Excess", desc: "Raising your voluntary excess from £150 to £250 or £500 lowers the insurer's liability, resulting in optimized policy match scores and acceptance terms." },
+  { title: "Accurately Estimate Mileage", desc: "Overestimating your mileage limits your matching options. Look at past MOT certificates to calculate a precise annual figure." },
+  { title: "Install Approved Security", desc: "Thatcham-approved immobilizers, trackers, or locking wheel nuts decrease security risk groups, expanding your coverage options." },
+  { title: "Park Safely Overnight", desc: "Parking on a private driveway or locked garage instead of a public road lowers theft risks, improving underwriting acceptance." },
 ]
 
 const insuranceFaqs = [
@@ -177,8 +177,8 @@ export default function CarInsurance() {
                         <h4 className="font-extrabold text-slate-900 mt-2 text-sm">LV= Premier Comp</h4>
                       </div>
                       <div className="text-right">
-                        <div className="text-lg font-black text-slate-900">£387</div>
-                        <div className="text-[10px] font-bold text-slate-500">Annual cost</div>
+                        <div className="text-lg font-black text-slate-900">98%</div>
+                        <div className="text-[10px] font-bold text-slate-500">Match Score</div>
                       </div>
                     </div>
 
@@ -190,9 +190,9 @@ export default function CarInsurance() {
 
                   <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-xl p-3.5 flex justify-between items-center text-xs">
                     <span className="font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1">
-                      <TrendingDown className="h-4 w-4" /> Average saving
+                      <Shield className="h-4 w-4" /> Policy Tier
                     </span>
-                    <span className="font-black text-emerald-600 text-sm">£312 Saved</span>
+                    <span className="font-black text-emerald-600 text-sm">Excellent Fit</span>
                   </div>
                 </motion.div>
               </div>
@@ -207,7 +207,7 @@ export default function CarInsurance() {
             <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Deep Dive Guide</Badge>
             <h2 className="text-3xl font-extrabold text-foreground tracking-tight">What Is Car Insurance in the UK?</h2>
             <p className="text-slate-650 leading-relaxed text-base font-medium">
-              In the United Kingdom, car insurance is a legal mandate under the Road Traffic Act 1988. It represents a binding financial contract between you and an underwriter: in exchange for premium payments, the insurer protects you against crippling financial costs resulting from auto-accidents, theft, fire, or third-party liability claims.
+              In the United Kingdom, car insurance is a legal mandate under the Road Traffic Act 1988. It represents a binding financial contract between you and an underwriter: in exchange for a covered agreement, the insurer protects you against crippling financial costs resulting from auto-accidents, theft, fire, or third-party liability claims.
             </p>
             <p className="text-slate-650 leading-relaxed text-base font-medium">
               Driving a motor vehicle on public roads without valid coverage carries severe penalties, including a minimum £300 fixed penalty fine, 6 penalty points on your license, or potential vehicle seizure. CoverPilot ensures you compare and secure valid, fully regulated policies in minutes.
@@ -274,16 +274,16 @@ export default function CarInsurance() {
           </div>
         </section>
 
-        {/* SECTION 4 & 5: HOW PREMIUMS ARE CALCULATED */}
+        {/* SECTION 4 & 5: HOW POLICY FIT IS CALCULATED */}
         <section className="py-24 bg-white">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               
               <div className="space-y-6">
                 <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Educational Guide</Badge>
-                <h2 className="text-3xl font-extrabold text-foreground leading-tight">What Determines Your Insurance Premium?</h2>
+                <h2 className="text-3xl font-extrabold text-foreground leading-tight">What Determines Your Policy Eligibility & Match?</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  UK insurers analyze dozens of risk metrics to evaluate the mathematical probability of a claim. Understanding these variables empowers you to optimize your driving profile:
+                  UK insurers analyze dozens of risk metrics to evaluate your coverage fit. Understanding these variables empowers you to optimize your driving profile:
                 </p>
                 
                 <div className="space-y-4">
@@ -293,7 +293,7 @@ export default function CarInsurance() {
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground text-sm">NCD (No Claims Discount)</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">Every claim-free year drives your premium cost down, sometimes by up to 60% after 5+ years.</p>
+                      <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">Every claim-free year improves your eligibility and terms, maximizing coverage options after 5+ years.</p>
                     </div>
                   </div>
 
@@ -313,7 +313,7 @@ export default function CarInsurance() {
               <Card className="border border-border/80 shadow-md p-6 bg-slate-50/20 rounded-2.5xl space-y-4">
                 <h3 className="font-extrabold text-foreground text-base border-b pb-3 border-slate-200">Main Risk Variables</h3>
                 <div className="divide-y divide-slate-100 text-xs">
-                  {premiumFactors.map((item, idx) => (
+                  {matchFactors.map((item, idx) => (
                     <div key={idx} className="py-3 flex justify-between gap-4">
                       <div>
                         <div className="font-bold text-foreground">{item.factor}</div>
@@ -329,24 +329,24 @@ export default function CarInsurance() {
           </div>
         </section>
 
-        {/* SECTION 6: TIPS TO REDUCE YOUR PREMIUM */}
+        {/* SECTION 6: TIPS TO OPTIMIZE ELIGIBILITY */}
         <section className="py-24 bg-slate-50/50 border-t border-border/40">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
               <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Actionable Advice</Badge>
-              <h2 className="text-3xl font-extrabold text-foreground tracking-tight">Four Pro-Tips to Lower Premium Rates</h2>
-              <p className="text-muted-foreground">Follow these guidelines prior to comparing quotes to maximize eligible discounts.</p>
+              <h2 className="text-3xl font-extrabold text-foreground tracking-tight">Four Pro-Tips to Optimize Policy Terms & Eligibility</h2>
+              <p className="text-muted-foreground">Follow these guidelines prior to comparing quotes to maximize eligible coverage parameters.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {savingTips.map((tip, idx) => (
+              {eligibilityTips.map((tip, idx) => (
                 <Card key={idx} className="border border-border/60 p-6 bg-white rounded-2.5xl shadow-sm hover:shadow-md transition-all">
                   <CardContent className="p-0 space-y-3">
                     <h3 className="font-extrabold text-foreground text-base flex items-center gap-2">
                       <div className="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-xs font-bold">{idx + 1}</div>
                       {tip.title}
                     </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                    <p className="text-xs text-slate-550 leading-relaxed font-medium">
                       {tip.desc}
                     </p>
                   </CardContent>

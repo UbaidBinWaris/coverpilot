@@ -8,7 +8,7 @@ const footerSections = [
     links: [
       { label: "Car Insurance", href: "/car-insurance" },
       { label: "How It Works", href: "/#how-it-works" },
-      { label: "Savings Calculator", href: "/#calculator" },
+      { label: "Coverage Match Calculator", href: "/#calculator" },
       { label: "Quote Engine", href: "/compare" },
     ],
   },
@@ -52,7 +52,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm max-w-sm text-slate-400 leading-relaxed">
-              Compare car insurance quotes from the UK's leading providers in minutes. Safe, transparent, and always 100% free to use.
+              Compare car insurance coverage and policy benefits from the UK's leading providers in minutes. Safe, transparent, and direct.
             </p>
             <div className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full w-fit">
               <Shield className="h-4 w-4" />

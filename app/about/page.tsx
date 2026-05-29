@@ -49,8 +49,8 @@ const teamMembers = [
 ]
 
 const roadmap = [
-  { date: "Q1 2026", title: "Automated Renewal Lock", desc: "Release of CoverPilot's passive monitoring system that scans for discounts 30 days prior to your policy renewal date." },
-  { date: "Q2 2026", title: "Telematics Integration", desc: "Introduce customized mobile telematics data syncing. Opt-in to share clean driving records for further 25% discounts." },
+  { date: "Q1 2026", title: "Automated Renewal Lock", desc: "Release of CoverPilot's passive monitoring system that scans for optimal coverage options 30 days prior to your policy renewal date." },
+  { date: "Q2 2026", title: "Telematics Integration", desc: "Introduce customized mobile telematics data syncing. Opt-in to share clean driving records for further coverage compatibility." },
   { date: "Q3 2026", title: "Home & Life Comparison", desc: "Expanding CoverPilot's robust API pipelines to cover multi-asset household portfolios." },
   { date: "Q4 2026", title: "Instant Underwriting Ledger", desc: "Introducing localized instant policy lock-in tools directly on-chain for faster underwriting validation." },
 ]
@@ -98,7 +98,7 @@ export default function About() {
               transition={{ delay: 0.2 }}
               className="text-base sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed"
             >
-              CoverPilot was founded to replace slow, outdated insurance aggregation processes with a clean, technology-driven platform that saves you money in under 2 minutes.
+              CoverPilot was founded to replace slow, outdated insurance aggregation processes with a clean, technology-driven platform that aligns your coverage needs in under 2 minutes.
             </motion.p>
           </div>
         </section>
@@ -110,7 +110,7 @@ export default function About() {
               <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Our Process</Badge>
               <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">How CoverPilot Works</h2>
               <p className="text-slate-500 leading-relaxed text-sm max-w-lg mx-auto">
-                We've built direct developer integrations that pull prices within milliseconds.
+                We've built direct developer integrations that pull features within milliseconds.
               </p>
             </div>
 
@@ -127,7 +127,7 @@ export default function About() {
                 <div className="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm shrink-0">2</div>
                 <div>
                   <h4 className="font-extrabold text-slate-900 text-base">Real-Time Secure API Query</h4>
-                  <p className="text-xs text-slate-550 leading-relaxed mt-1 font-medium">Instead of using pre-scanned rates, our QuoteFlow engine queries the secure APIs of over 50 insurers simultaneously. Within seconds, underwriting systems calculate exact premiums tailored to your parameters.</p>
+                  <p className="text-xs text-slate-550 leading-relaxed mt-1 font-medium">Instead of using pre-scanned rates, our QuoteFlow engine queries the secure APIs of over 50 insurers simultaneously. Within seconds, underwriting systems calculate exact coverage options tailored to your parameters.</p>
                 </div>
               </div>
 
@@ -135,7 +135,7 @@ export default function About() {
                 <div className="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm shrink-0">3</div>
                 <div>
                   <h4 className="font-extrabold text-slate-900 text-base">Unbiased Recommendation Sorting</h4>
-                  <p className="text-xs text-slate-550 leading-relaxed mt-1 font-medium">CoverPilot compiles quotes dynamically, sorting by Cheapest Premium, Excess, and Rating. We highlight a recommended Best Match, balancing policy quality against raw cost.</p>
+                  <p className="text-xs text-slate-550 leading-relaxed mt-1 font-medium">CoverPilot compiles quotes dynamically, sorting by Coverage Fit, Excess, and Rating. We highlight a recommended Best Match, balancing policy quality against your custom parameters.</p>
                 </div>
               </div>
             </div>

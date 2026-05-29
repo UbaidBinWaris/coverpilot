@@ -33,8 +33,7 @@ const mockQuotes = [
     provider: "Admiral",
     badge: "ADMIRAL",
     policyName: "Admiral Gold Comprehensive",
-    annualPremium: 382,
-    monthlyPremium: 34,
+    fitScore: 98,
     excess: 250,
     features: ["Windscreen cover included", "Courtesy car included", "No Claims Discount protection available"],
     rating: 4.7,
@@ -44,8 +43,7 @@ const mockQuotes = [
     provider: "Aviva",
     badge: "AVIVA",
     policyName: "Aviva Online Comp Plus",
-    annualPremium: 410,
-    monthlyPremium: 37,
+    fitScore: 94,
     excess: 200,
     features: ["24/7 UK claims hotline", "Personal belongings up to £150", "Courtesy car included"],
     rating: 4.8,
@@ -55,8 +53,7 @@ const mockQuotes = [
     provider: "LV=",
     badge: "LV=",
     policyName: "LV= Premium Protection",
-    annualPremium: 435,
-    monthlyPremium: 39,
+    fitScore: 89,
     excess: 150,
     features: ["Lifetime guarantee on repairs", "New car replacement", "Unlimited windscreen cover"],
     rating: 4.9,
@@ -66,8 +63,7 @@ const mockQuotes = [
     provider: "Hastings Direct",
     badge: "HASTINGS",
     policyName: "Hastings Direct Essential",
-    annualPremium: 349,
-    monthlyPremium: 31,
+    fitScore: 78,
     excess: 350,
     features: ["Uninsured driver promise", "EU cover up to 90 days", "Windscreen cover optional"],
     rating: 4.4,
@@ -94,7 +90,7 @@ export default function CompareQuotes() {
   })
 
   // Results State
-  const [sortBy, setSortBy] = useState("price") // 'price' | 'excess' | 'rating'
+  const [sortBy, setSortBy] = useState("fit") // 'fit' | 'excess' | 'rating'
   const [filterType, setFilterType] = useState("all") // 'all' | 'recommended'
   const [activeSearchStepText, setActiveSearchStepText] = useState("Connecting to insurer servers...")
 
@@ -112,8 +108,8 @@ export default function CompareQuotes() {
       const texts = [
         "Connecting to insurer secure APIs...",
         "Validating driver history profile...",
-        "Scanning Admiral groups for young driver discounts...",
-        "Fetching real-time rates from Aviva & LV=...",
+        "Scanning Admiral groups for young driver coverage options...",
+        "Fetching real-time policy terms from Aviva & LV=...",
         "Compiling 14 matching offers...",
       ]
       let currentTextIdx = 0
@@ -154,8 +150,8 @@ export default function CompareQuotes() {
     }
 
     // Sort
-    if (sortBy === "price") {
-      result.sort((a, b) => a.annualPremium - b.annualPremium)
+    if (sortBy === "fit") {
+      result.sort((a, b) => b.fitScore - a.fitScore)
     } else if (sortBy === "excess") {
       result.sort((a, b) => a.excess - b.excess)
     } else if (sortBy === "rating") {
@@ -518,7 +514,7 @@ export default function CompareQuotes() {
                     {/* Sort buttons */}
                     <div className="flex bg-slate-100 rounded-lg p-0.5 border border-slate-200">
                       {[
-                        { label: "Cheapest Premium", val: "price" },
+                        { label: "Best Fit Score", val: "fit" },
                         { label: "Lowest Excess", val: "excess" },
                         { label: "Highest Rated", val: "rating" },
                       ].map((opt) => (
@@ -565,7 +561,7 @@ export default function CompareQuotes() {
                         {/* Recommendation Banner */}
                         {quote.recommended && (
                           <div className="bg-primary text-white text-center py-1.5 px-4 text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1">
-                            <Sparkles className="h-3.5 w-3.5 fill-white" /> Recommended Deal: Best balance of price & rating
+                            <Sparkles className="h-3.5 w-3.5 fill-white" /> Recommended Deal: Highest match compatibility & insurer rating
                           </div>
                         )}
 
@@ -600,12 +596,12 @@ export default function CompareQuotes() {
                             </ul>
                           </div>
 
-                          {/* Price & Call to Action */}
+                          {/* Match Score & Call to Action */}
                           <div className="flex flex-col sm:flex-row lg:flex-col justify-between items-stretch lg:items-end gap-4 lg:text-right border-t lg:border-t-0 lg:border-l border-border/60 pt-6 lg:pt-0 pl-0 lg:pl-8">
                             <div>
-                              <div className="text-3.5xl font-black text-foreground">£{quote.annualPremium}</div>
+                              <div className="text-3.5xl font-black text-foreground">{quote.fitScore}%</div>
                               <div className="text-xs font-semibold text-muted-foreground mt-0.5">
-                                or £{quote.monthlyPremium}/mo • £{quote.excess} Excess
+                                Coverage Fit Score • £{quote.excess} Excess
                               </div>
                             </div>
 
@@ -625,7 +621,7 @@ export default function CompareQuotes() {
                     <div className="text-center py-16 bg-white border border-border rounded-2.5xl space-y-3">
                       <div className="text-lg font-bold text-foreground">No quotes match your filters</div>
                       <p className="text-sm text-muted-foreground">Try clearing your filters or resetting the sort criteria.</p>
-                      <Button variant="outline" onClick={() => { setSortBy("price"); setFilterType("all"); }}>
+                      <Button variant="outline" onClick={() => { setSortBy("fit"); setFilterType("all"); }}>
                         Reset Filters
                       </Button>
                     </div>
@@ -638,13 +634,13 @@ export default function CompareQuotes() {
                   {/* Why Recommended */}
                   <div className="space-y-4">
                     <h3 className="text-xl font-extrabold text-foreground tracking-tight flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-primary" /> Why These Quotes Are Recommended
+                      <Sparkles className="h-5 w-5 text-primary" /> Why These Policies Are Recommended
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-semibold">
-                      CoverPilot's actuarial matchmaking system operates on multi-dimensional scoring equations. Instead of simply ordering results by raw monthly price, we balance policy quality metrics: voluntary excess choices, insurer claims payout rating histories, and integrated value perks (like included windscreen cover or courtesy cars).
+                      CoverPilot's actuarial matchmaking system operates on multi-dimensional scoring equations. Instead of static grouping, we evaluate comprehensive policy quality metrics: voluntary excess choices, insurer claims payout rating histories, and integrated value perks (like included windscreen cover or courtesy cars).
                     </p>
                     <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-semibold">
-                      A policy that is £2 cheaper but carries a £450 compulsory excess is mathematically riskier than a slightly higher monthly option with a flat £150 excess. Our recommender isolates the ultimate balance of safety and cost.
+                      A policy with unbalanced compulsory excess is mathematically riskier than options with a flat voluntary excess. Our recommender isolates the ultimate balance of policy fit, safety, and cover limits.
                     </p>
                   </div>
 
@@ -666,7 +662,7 @@ export default function CompareQuotes() {
                         <tbody className="divide-y divide-slate-100 font-semibold">
                           <tr className="hover:bg-slate-50/50"><td className="p-3">Windscreen Cover</td><td className="p-3 text-emerald-600 font-bold">Unlimited</td><td className="p-3">£150 limit</td><td className="p-3">Optional add-on</td></tr>
                           <tr className="hover:bg-slate-50/50"><td className="p-3">Courtesy Car</td><td className="p-3 text-emerald-600 font-bold">Included (Standard)</td><td className="p-3 text-emerald-600 font-bold">Included (Standard)</td><td className="p-3">Optional add-on</td></tr>
-                          <tr className="hover:bg-slate-50/50"><td className="p-3">Legal Protection</td><td className="p-3">Optional (£20)</td><td className="p-3 text-emerald-600 font-bold">Included (Premier)</td><td className="p-3">Optional (£22)</td></tr>
+                          <tr className="hover:bg-slate-50/50"><td className="p-3">Legal Protection</td><td className="p-3">Optional</td><td className="p-3 text-emerald-600 font-bold">Included (Premier)</td><td className="p-3">Optional</td></tr>
                           <tr className="hover:bg-slate-50/50"><td className="p-3">Europe Cover</td><td className="p-3">90 Days</td><td className="p-3">90 Days</td><td className="p-3">30 Days</td></tr>
                         </tbody>
                       </table>
@@ -681,7 +677,7 @@ export default function CompareQuotes() {
                         <CardContent className="p-0 space-y-2">
                           <div className="font-bold text-foreground text-xs uppercase tracking-wider">No Claims Discount (NCD)</div>
                           <p className="text-[11px] text-slate-450 leading-relaxed font-semibold">
-                            A discount on your premium awarded for every consecutive year you drive without making an at-fault claim. Can save up to 60% over 5+ years.
+                            An underwriting rating enhancement awarded for every consecutive year you drive without making an at-fault claim. Maximizes eligibility and options over 5+ years.
                           </p>
                         </CardContent>
                       </Card>
@@ -689,7 +685,7 @@ export default function CompareQuotes() {
                         <CardContent className="p-0 space-y-2">
                           <div className="font-bold text-foreground text-xs uppercase tracking-wider">Voluntary vs Compulsory Excess</div>
                           <p className="text-[11px] text-slate-450 leading-relaxed font-semibold">
-                            Compulsory is set by the underwriter and non-negotiable. Voluntary is set by you; raising it reduces monthly premium, but increases your out-of-pocket claims cost.
+                            Compulsory is set by the underwriter and non-negotiable. Voluntary is set by you; raising it modifies your risk profile alignment, but increases your out-of-pocket claims cost.
                           </p>
                         </CardContent>
                       </Card>

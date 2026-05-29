@@ -78,33 +78,32 @@ const steps = [
   },
 ]
 
-// Detailed Customer Success Stories
 const successStories = [
   {
     name: "Liam O'Connor",
     age: "21",
     location: "Manchester",
-    saving: "£620",
+    saving: "98% Match",
     car: "Ford Fiesta (1.0L)",
-    story: "As a young driver, auto-renewals are absolute nightmares. My previous insurer sent me a renewal quote of £1,450. I entered my registration plate on CoverPilot, adjusted my voluntary excess, and matched with an Admiral first-time driver policy for £830. The process took under 3 minutes, and I had my insurance certificate in my inbox immediately.",
+    story: "As a young driver, auto-renewals are absolute nightmares. My previous insurer sent me a renewal quote with very high compulsory excess and generic conditions. I entered my registration plate on CoverPilot, adjusted my voluntary excess, and matched with an Admiral first-time driver policy that fit my needs perfectly. The process took under 3 minutes, and I had my insurance certificate in my inbox immediately.",
     date: "May 2026",
   },
   {
     name: "Priya Sharma",
     age: "38",
     location: "London",
-    saving: "£312",
+    saving: "95% Match",
     car: "Tesla Model Y",
-    story: "EV insurance in London has risen dramatically over the past two years. Aggregators usually show me generic plans that lack custom battery cover. CoverPilot isolated a policy from Aviva that offered dedicated battery protection and unlimited windscreen cover for less than I paid last year. Extremely impressed by the clean fintech UI and lack of follow-up spam calls.",
+    story: "EV insurance in London has risen dramatically over the past two years. Aggregators usually show me generic plans that lack custom battery cover. CoverPilot isolated a policy from Aviva that offered dedicated battery protection and unlimited windscreen cover. Extremely impressed by the clean fintech UI and lack of follow-up spam calls.",
     date: "April 2026",
   },
   {
     name: "Arthur Pendelton",
     age: "64",
     location: "Bath",
-    saving: "£284",
+    saving: "92% Match",
     car: "Volkswagen Golf",
-    story: "I wanted a transparent policy with low compulsory excess and optional breakdown cover. CoverPilot's side-by-side grid let me easily filter out plans with hidden fees. I locked in a comprehensive policy with LV= Premier Cover that included home start breakdown for £284 less than my renewal notice. Fully regulated, clean, and highly secure.",
+    story: "I wanted a transparent policy with low compulsory excess and optional breakdown cover. CoverPilot's side-by-side grid let me easily filter out plans with hidden conditions. I locked in a comprehensive policy with LV= Premier Cover that included home start breakdown. Fully regulated, clean, and highly secure.",
     date: "March 2026",
   },
 ]
@@ -112,14 +111,14 @@ const successStories = [
 // Latest Guides Database
 const learningGuides = [
   {
-    title: "Decoding Your Renewal Quote: The Loyaty Penalty",
-    desc: "Understand why UK insurers routinely raise premiums on existing clients, and how active real-time quote comparison helps you legally bypass the loyalty tax.",
+    title: "Decoding Your Renewal Quote: Coverage Options",
+    desc: "Understand why UK insurers routinely alter coverage boundaries on renewal, and how active real-time policy feature comparison helps you secure optimal coverage levels.",
     readTime: "4 min read",
-    category: "Savings Strategy",
+    category: "Coverage Optimization",
   },
   {
     title: "Understanding EV Insurance Groupings",
-    desc: "Electric vehicles are sorted into specific risk groups due to specialized parts and battery replacement costs. Learn which EV models are cheapest to insure this year.",
+    desc: "Electric vehicles are sorted into specific risk groups due to specialized parts and battery replacement costs. Learn which EV models are easiest to insure this year.",
     readTime: "6 min read",
     category: "EV Guides",
   },
@@ -133,7 +132,7 @@ const learningGuides = [
 
 const benefitsTable = [
   { feature: "Quote Generation Speed", cp: "Under 2 minutes", others: "12-15 minutes of tedious input" },
-  { feature: "Broker Platform Fees", cp: "£0 (Always completely free)", others: "Up to £15-£25 markup fees added" },
+  { feature: "Direct Policy Customization", cp: "Fully flexible excess & perks", others: "Rigid pre-packaged policy groups" },
   { feature: "Database API Connections", cp: "50+ leading UK insurers mapped", others: "15-20 secondary brokers scanned" },
   { feature: "Smart Filtration Engine", cp: "Direct personalization matches", others: "Standard static price-ordered charts" },
   { feature: "Security & Encryption Standards", cp: "Bank-grade AES-256 data lock", others: "Standard insecure HTTP connections" },
@@ -142,12 +141,12 @@ const benefitsTable = [
 
 const faqs = [
   {
-    question: "How does CoverPilot save me money on car insurance?",
-    answer: "CoverPilot connects directly via high-speed secure APIs to over 50 of the UK's leading insurance companies. By matching your driver profile and vehicle with real-time underwriting algorithms, we pull custom quotes dynamically to find the absolute lowest premium with no added platform fees.",
+    question: "How does CoverPilot help me find the best car insurance?",
+    answer: "CoverPilot connects directly via high-speed secure APIs to over 50 of the UK's leading insurance companies. By matching your driver profile and vehicle with real-time underwriting algorithms, we pull custom quotes dynamically to find the absolute best coverage suitability with no hidden restrictions.",
   },
   {
     question: "Is CoverPilot really 100% free to use?",
-    answer: "Yes, absolutely. We do not charge comparison or booking fees. Our platform is completely free to consumers. We are paid a commission directly by the insurance provider you choose, which never affects the premium you pay.",
+    answer: "Yes, absolutely. We do not charge comparison or booking fees. Our platform is completely free to consumers. We are paid a commission directly by the insurance provider you choose, which never affects the coverage or policy terms you receive.",
   },
   {
     question: "How long does a quote comparison take?",
@@ -160,22 +159,21 @@ const faqs = [
 ]
 
 export default function Home() {
-  // Savings Calculator State
+  // Coverage Match Calculator State
   const [driverAge, setDriverAge] = useState("25-34")
   const [vehicleValue, setVehicleValue] = useState(15000)
   const [mileage, setMileage] = useState(8000)
 
-  // Quick mathematical mock formula to compute realistic-looking savings
-  const calculateSavings = () => {
-    let base = 150
-    if (driverAge === "17-24") base += 180
-    if (driverAge === "25-34") base += 60
-    if (driverAge === "50+") base -= 30
+  // Quick mathematical mock formula to compute a realistic Coverage Fit Score percentage
+  const calculateFitScore = () => {
+    let base = 95
+    if (driverAge === "17-24") base -= 8
+    if (driverAge === "50+") base += 3
 
-    base += Math.round(vehicleValue * 0.005)
-    base += Math.round(mileage * 0.01)
+    if (vehicleValue > 40000) base -= 5
+    if (mileage > 15000) base -= 4
 
-    return Math.min(Math.max(base, 95), 520)
+    return Math.min(Math.max(base, 70), 99)
   }
 
   return (
@@ -230,7 +228,7 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl leading-relaxed"
                 >
-                  Save up to £487 a year by comparing trusted UK insurers side-by-side. 100% free, direct secure API connections, and zero spam calls.
+                  Find the most comprehensive policies by comparing trusted UK insurers side-by-side. Completely secure direct API connections, zero spam calls, and unbiased matches.
                 </motion.p>
 
                 {/* Action Buttons */}
@@ -264,7 +262,7 @@ export default function Home() {
                     <Check className="h-4.5 w-4.5 text-emerald-500 stroke-[3]" /> FCA Regulated
                   </span>
                   <span className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                    <Check className="h-4.5 w-4.5 text-emerald-500 stroke-[3]" /> No Hidden Fees
+                    <Check className="h-4.5 w-4.5 text-emerald-500 stroke-[3]" /> Unbiased Matches
                   </span>
                   <span className="flex items-center gap-2 text-sm font-semibold text-slate-700">
                     <Check className="h-4.5 w-4.5 text-emerald-500 stroke-[3]" /> 50+ Insurance Providers
@@ -287,8 +285,8 @@ export default function Home() {
                     <div className="text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-wider mt-0.5">UK Insurers</div>
                   </div>
                   <div className="border-l border-slate-200 pl-6">
-                    <div className="text-2.5xl sm:text-3xl font-black text-foreground">£42M+</div>
-                    <div className="text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-wider mt-0.5">Customer Savings</div>
+                    <div className="text-2.5xl sm:text-3xl font-black text-foreground">45k+</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-wider mt-0.5">Matched Policies</div>
                   </div>
                 </motion.div>
 
@@ -335,8 +333,8 @@ export default function Home() {
                         <div className="text-[11px] font-medium text-slate-500">Comprehensive • £250 excess</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-lg font-black text-foreground">£43<span className="text-xs font-normal text-slate-500">/mo</span></div>
-                        <div className="text-[9px] font-bold text-slate-400 uppercase">£387 Annual</div>
+                        <div className="text-lg font-black text-foreground">98%<span className="text-xs font-normal text-slate-500"> Match</span></div>
+                        <div className="text-[9px] font-bold text-slate-400 uppercase">Excellent Fit</div>
                       </div>
                     </div>
 
@@ -350,8 +348,8 @@ export default function Home() {
                         <div className="text-[11px] font-medium text-slate-500">Comprehensive • £250 excess</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-lg font-black text-foreground">£47<span className="text-xs font-normal text-slate-500">/mo</span></div>
-                        <div className="text-[9px] font-bold text-slate-400 uppercase">£410 Annual</div>
+                        <div className="text-lg font-black text-foreground">94%<span className="text-xs font-normal text-slate-500"> Match</span></div>
+                        <div className="text-[9px] font-bold text-slate-400 uppercase">High Fit</div>
                       </div>
                     </div>
 
@@ -365,8 +363,8 @@ export default function Home() {
                         <div className="text-[11px] font-medium text-slate-500">Comprehensive • £250 excess</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-lg font-black text-foreground">£51<span className="text-xs font-normal text-slate-500">/mo</span></div>
-                        <div className="text-[9px] font-bold text-slate-400 uppercase">£448 Annual</div>
+                        <div className="text-lg font-black text-foreground">89%<span className="text-xs font-normal text-slate-500"> Match</span></div>
+                        <div className="text-[9px] font-bold text-slate-400 uppercase">Good Fit</div>
                       </div>
                     </div>
 
@@ -374,12 +372,12 @@ export default function Home() {
                     <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-xl p-4 flex justify-between items-center mt-2">
                       <div className="space-y-0.5">
                         <div className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1">
-                          <TrendingDown className="h-3.5 w-3.5" /> Total Estimated Saving
+                          <Check className="h-3.5 w-3.5" /> High Match Compatibility
                         </div>
-                        <div className="text-xs text-slate-500 font-semibold">Compared to average renewal rates</div>
+                        <div className="text-xs text-slate-500 font-semibold">Matches 98% of your risk profile parameters</div>
                       </div>
                       <div className="text-right font-black text-xl text-emerald-600">
-                        £312<span className="text-xs font-bold text-emerald-500">/yr</span>
+                        LV= Approved
                       </div>
                     </div>
                   </div>
@@ -394,7 +392,7 @@ export default function Home() {
                   className="absolute top-10 -left-6 bg-slate-900 text-white rounded-full px-4 py-2 text-xs font-bold shadow-xl border border-slate-800 flex items-center gap-1.5"
                 >
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                  £487 Saved
+                  100% Secure
                 </motion.div>
 
                 {/* Element 2: Best Price Found */}
@@ -404,7 +402,7 @@ export default function Home() {
                   className="absolute -bottom-4 right-2 bg-emerald-500 text-white rounded-full px-4 py-2 text-xs font-bold shadow-lg flex items-center gap-1.5"
                 >
                   <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  Best Price Found
+                  Best Match Approved
                 </motion.div>
 
                 {/* Element 3: 4.8★ Rating */}
@@ -467,7 +465,7 @@ export default function Home() {
               <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Unmatched Capabilities</Badge>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Built to Outperform Traditional Aggregators</h2>
               <p className="text-muted-foreground leading-relaxed text-base">
-                We replaced outdated comparison loops with high-speed API direct matches. Compare quotes side-by-side in absolute clarity with zero broker-added premiums.
+                We replaced outdated comparison loops with high-speed API direct matches. Compare quotes side-by-side in absolute clarity with direct insurer integration.
               </p>
             </div>
 
@@ -479,7 +477,7 @@ export default function Home() {
                   </div>
                   <h3 className="font-extrabold text-foreground text-lg">Direct Underwriting Connection</h3>
                   <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                    By bypassing secondary broker aggregations, we request rates directly from insurer pricing engines. This removes markup layers, saving you up to 15% on similar policy quotes.
+                    By bypassing secondary broker aggregations, we match you directly with insurer underwriting systems. This guarantees maximum transparent alignment with policy terms.
                   </p>
                 </CardContent>
               </Card>
@@ -503,7 +501,7 @@ export default function Home() {
                   </div>
                   <h3 className="font-extrabold text-foreground text-lg">Intelligent Recommender Systems</h3>
                   <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                    Our dynamic filters search beyond just raw price. We balance ratings, voluntary excesses, claims handling speeds, and policy perks to isolate the ultimate Best Match options.
+                    Our dynamic filters evaluate multiple data points. We balance ratings, voluntary excesses, claims handling speeds, and policy perks to isolate the ultimate Best Match options.
                   </p>
                 </CardContent>
               </Card>
@@ -516,7 +514,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">Quote Comparison in 4 Easy Steps</h2>
-              <p className="mt-4 text-muted-foreground">We've cut out the unnecessary clutter. Here is how simple finding the right premium is with CoverPilot.</p>
+              <p className="mt-4 text-muted-foreground">We've cut out the unnecessary clutter. Here is how simple finding the right policy is with CoverPilot.</p>
             </div>
 
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -576,7 +574,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SAVINGS CALCULATOR */}
+        {/* COVERAGE CALCULATOR */}
         <section id="calculator" className="py-24 bg-slate-50/30 border-y border-border/40">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
@@ -584,9 +582,9 @@ export default function Home() {
               {/* Left Side: Info */}
               <div className="space-y-6">
                 <Badge variant="accent" className="px-3 py-1 font-semibold uppercase tracking-wider text-xs w-fit">Interactive Calculator</Badge>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground leading-tight">Estimate Your Insurance Savings Instantly</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground leading-tight">Estimate Your Coverage Match Score Instantly</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Use our live calculator to estimate how much you could save on your car insurance policy renewal. Choose your variables, and watch the dynamic quotes calibrate in real-time.
+                  Use our live calculator to estimate the compatibility of standard policies with your profile. Choose your variables, and watch the dynamic fit score calibrate in real-time.
                 </p>
                 <div className="space-y-4 pt-4">
                   <div className="flex items-center gap-3 text-sm text-foreground font-semibold">
@@ -595,7 +593,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-3 text-sm text-foreground font-semibold">
                     <div className="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600"><Check className="h-3.5 w-3.5" /></div>
-                    API-mapped calculation models
+                    API-mapped compatibility models
                   </div>
                 </div>
               </div>
@@ -665,19 +663,19 @@ export default function Home() {
                   {/* Live Computation display */}
                   <div className="bg-primary/5 border border-primary/10 rounded-xl p-6 text-center space-y-2 mt-6">
                     <div className="text-sm font-semibold text-primary uppercase tracking-widest flex items-center justify-center gap-1.5">
-                      <Percent className="h-4 w-4" /> Estimated Saving
+                      <Percent className="h-4 w-4" /> Coverage Fit Score
                     </div>
                     <div className="text-4xl font-extrabold text-foreground flex items-center justify-center gap-1">
-                      £{calculateSavings()}
+                      {calculateFitScore()}%
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      *Average saving based on similar user quotes generated this week.
+                      *Estimated fit based on typical insurer underwriting guidelines.
                     </p>
                   </div>
 
                   <Link href="/compare" className="block pt-2">
                     <Button className="w-full font-bold py-6 text-base flex justify-center gap-2 group shadow-md shadow-primary/15">
-                      Compare Quotes Now
+                      Compare Policies Now
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </Link>
@@ -696,7 +694,7 @@ export default function Home() {
               <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Success Stories</Badge>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Real Case Studies from UK Drivers</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Read how individual drivers used CoverPilot's quote engine to legally bypass massive auto-renewal hikes.
+                Read how individual drivers used CoverPilot's quote engine to optimize their coverage terms easily.
               </p>
             </div>
 
@@ -720,7 +718,7 @@ export default function Home() {
                     </div>
                     <div className="text-emerald-600 font-black text-right">
                       <div className="text-base font-extrabold">{story.saving}</div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider">Annual Saving</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Policy Match</span>
                     </div>
                   </div>
                 </Card>
@@ -793,9 +791,9 @@ export default function Home() {
           </div>
 
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
-            <h2 className="text-3.5xl sm:text-5xl font-black tracking-tight leading-tight">Ready to Compare & Save?</h2>
+            <h2 className="text-3.5xl sm:text-5xl font-black tracking-tight leading-tight">Ready to Compare Policies?</h2>
             <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Join thousands of smart UK drivers who found cheaper car insurance using our modern quote flow. Free to use, direct connection, secure.
+              Join thousands of smart UK drivers who optimized their car insurance coverage using our modern quote flow. Transparent, direct connection, secure.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/compare" className="w-full sm:w-auto">
