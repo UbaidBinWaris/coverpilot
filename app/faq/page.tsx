@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { HelpCircle, Shield, Sliders, FileCheck, ArrowRight } from "lucide-react"
+import { HelpCircle, Sliders, FileCheck, ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -35,7 +35,7 @@ const categories = [
     items: [
       {
         q: "What information do I need to prepare before starting a quote?",
-        a: "To get quotes in under 3 minutes, you'll want to have: 1. Your car registration plate number, 2. Your estimated annual mileage, 3. Details of any claims or accidents in the past 5 years, and 4. Your driving license history."
+        a: "To get quotes in under 2 minutes, you'll want to have: 1. Your car registration plate number, 2. Your estimated annual mileage, 3. Details of any claims or accidents in the past 5 years, and 4. Your driving license history."
       },
       {
         q: "Why are my quotes different from other aggregators?",
@@ -43,7 +43,7 @@ const categories = [
       },
       {
         q: "Can I save my progress and resume later?",
-        a: "Currently, our form is optimized to be completed in one sitting (taking less than 3 minutes). However, we store a secure local session cookie so if you accidentally close the browser, your inputs will be remembered."
+        a: "Currently, our form is optimized to be completed in one sitting (taking less than 2 minutes). However, we store a secure local session cookie so if you accidentally close the browser, your inputs will be remembered."
       }
     ]
   },
@@ -68,19 +68,45 @@ export default function FAQs() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <main className="flex-grow py-12 md:py-20 bg-slate-50/50">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-12">
-          
-          {/* Header */}
-          <div className="text-center max-w-2xl mx-auto space-y-4">
-            <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Help Center</Badge>
-            <h1 className="text-3.5xl font-black text-foreground tracking-tight">Frequently Asked Questions</h1>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Find answers to common questions about CoverPilot's quote engine, coverage options, and regulatory standards.
-            </p>
-          </div>
+      <main className="flex-grow bg-slate-50/20">
+        
+        {/* HERO SECTION */}
+        <section 
+          className="relative min-h-[40vh] flex items-center overflow-hidden bg-white border-b border-border/40 bg-premium-grid"
+        >
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center space-y-4 py-12">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex justify-center"
+            >
+              <Badge variant="accent" className="px-3 py-1 text-xs font-semibold uppercase tracking-widest flex items-center gap-1.5 shadow-sm">
+                <HelpCircle className="h-3.5 w-3.5" /> Help Center
+              </Badge>
+            </motion.div>
 
-          {/* Accordion Categories */}
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl sm:text-5xl font-black text-foreground tracking-tight"
+            >
+              Frequently Asked Questions
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-base text-slate-600 font-medium max-w-xl mx-auto leading-relaxed"
+            >
+              Find answers to common questions about CoverPilot's quote engine, coverage options, and regulatory standards.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* Accordions Grid content */}
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 space-y-12">
           <div className="space-y-10">
             {categories.map((cat, catIdx) => {
               const Icon = cat.icon
@@ -134,8 +160,8 @@ export default function FAQs() {
               </Link>
             </div>
           </div>
-
         </div>
+
       </main>
 
       <Footer />

@@ -166,7 +166,7 @@ export default function CompareQuotes() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50/50">
+    <div className="flex flex-col min-h-screen bg-premium-grid">
       <Navbar />
 
       <main className="flex-grow py-12 md:py-16">

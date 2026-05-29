@@ -2,7 +2,18 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Shield, Sparkles, Check, ArrowRight, ShieldCheck, Car, HelpCircle } from "lucide-react"
+import { 
+  Shield, 
+  Sparkles, 
+  Check, 
+  ArrowRight, 
+  ShieldCheck, 
+  Car, 
+  HelpCircle,
+  Star,
+  Clock,
+  TrendingDown
+} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -52,50 +63,115 @@ export default function CarInsurance() {
       <Navbar />
 
       <main className="flex-grow">
+        
         {/* HERO SECTION */}
-        <section className="bg-gradient-to-b from-blue-50/50 via-white to-background py-16 md:py-24 text-center">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex justify-center"
-            >
-              <Badge variant="accent" className="px-3 py-1 text-xs font-semibold uppercase tracking-widest flex items-center gap-1.5 shadow-sm">
-                <Car className="h-3.5 w-3.5" /> UK Car Insurance Hub
-              </Badge>
-            </motion.div>
+        <section 
+          className="relative min-h-[75vh] flex items-center overflow-hidden bg-white border-b border-border/40 bg-premium-grid"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-16 lg:py-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              
+              {/* Left Column: SEO Headings & CTAs */}
+              <div className="lg:col-span-7 space-y-6 text-left">
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200/60 rounded-full px-3.5 py-1 text-xs text-slate-600 font-semibold shadow-sm w-fit"
+                >
+                  <Car className="h-3.5 w-3.5 text-primary" />
+                  <span>UK Car Insurance Hub</span>
+                </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-5xl font-black text-foreground tracking-tight leading-tight"
-            >
-              Smarter Car Insurance. <br className="hidden sm:inline" /><span className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Simpler Decisions.</span>
-            </motion.h1>
+                <motion.h1
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-4xl sm:text-5xl font-black text-foreground tracking-tight leading-[1.1]"
+                >
+                  Smarter Car Insurance. <br />
+                  <span className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Simpler Decisions.</span>
+                </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-            >
-              Learn about the different types of car insurance available in the UK, how rates are calculated, and how CoverPilot finds the best deals for your profile.
-            </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-base sm:text-lg text-slate-600 font-medium max-w-xl leading-relaxed"
+                >
+                  Learn about the different types of car insurance available in the UK, how rates are calculated, and how CoverPilot finds the best deals for your profile.
+                </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="pt-4"
-            >
-              <Link href="/compare">
-                <Button size="lg" className="font-bold text-base px-8 py-6 shadow-md shadow-primary/15 flex gap-2 group">
-                  Compare Car Quotes
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center"
+                >
+                  <Link href="/compare">
+                    <Button size="lg" className="font-bold text-base px-8 py-6 shadow-md shadow-primary/15 flex gap-2 group bg-primary hover:bg-primary/95">
+                      Compare Car Quotes
+                      <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+                </motion.div>
+
+                {/* Trust checklists */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-4 border-t border-slate-100 text-xs font-semibold text-slate-700"
+                >
+                  <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-emerald-500" /> FCA Regulated</span>
+                  <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-primary" /> Quotes under 2 mins</span>
+                  <span className="flex items-center gap-1.5"><Star className="h-4 w-4 text-amber-500 fill-amber-500" /> 4.8 Customer Score</span>
+                </motion.div>
+              </div>
+
+              {/* Right Column: Premium Insurtech Policy Card Preview Mockup */}
+              <div className="lg:col-span-5 relative flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/10 blur-xl -z-10 rounded-full" />
+                
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="w-full max-w-[380px] bg-white border border-slate-200/80 shadow-2xl rounded-2.5xl p-6 space-y-5"
+                >
+                  <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Policy Spotlight</span>
+                    <Sparkles className="h-4.5 w-4.5 text-primary" />
+                  </div>
+
+                  {/* Policy Mockup Card */}
+                  <div className="border border-primary/25 bg-primary/5 rounded-xl p-4 space-y-4">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <span className="font-black text-xs text-primary border border-primary/20 px-2 py-0.5 rounded bg-white">LV=</span>
+                        <h4 className="font-extrabold text-slate-900 mt-2 text-sm">LV= Premium Comp</h4>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-lg font-black text-slate-900">£387</div>
+                        <div className="text-[10px] font-bold text-slate-500">Annual cost</div>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-1.5 text-xs text-slate-600 font-semibold border-t border-primary/10 pt-3">
+                      <li className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-emerald-500" /> Free courtesy car</li>
+                      <li className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-emerald-500" /> Windscreen cover included</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-xl p-3.5 flex justify-between items-center text-xs">
+                    <span className="font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1">
+                      <TrendingDown className="h-4 w-4" /> Average saving
+                    </span>
+                    <span className="font-black text-emerald-600 text-sm">£312 Saved</span>
+                  </div>
+                </motion.div>
+              </div>
+
+            </div>
           </div>
         </section>
 

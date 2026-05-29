@@ -61,7 +61,7 @@ export default function Contact() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <main className="flex-grow py-12 md:py-20 bg-slate-50/50">
+      <main className="flex-grow py-12 md:py-20 bg-premium-grid">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

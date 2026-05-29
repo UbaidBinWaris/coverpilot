@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Shield, Users, Heart, Target, Sparkles, ArrowRight, ShieldCheck, Cpu } from "lucide-react"
+import { Shield, Heart, Target, Sparkles, ArrowRight, ShieldCheck, Cpu } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -30,13 +30,16 @@ const values = [
 
 export default function About() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-slate-50/20">
       <Navbar />
 
       <main className="flex-grow">
+        
         {/* HERO SECTION */}
-        <section className="bg-gradient-to-b from-blue-50/50 via-white to-background py-16 md:py-24 text-center">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
+        <section 
+          className="relative min-h-[55vh] flex items-center overflow-hidden bg-white border-b border-border/40 bg-premium-grid"
+        >
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center space-y-6 py-16">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -48,21 +51,21 @@ export default function About() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-4xl sm:text-5xl font-black text-foreground tracking-tight leading-tight"
             >
-              Redefining Insurance <br />Comparison for the <span className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Digital Age</span>
+              Redefining Insurance Comparison <br />for the <span className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Digital Age</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed"
             >
-              CoverPilot was founded to replace slow, outdated insurance aggregation processes with a clean, technology-driven platform that saves you money in under 3 minutes.
+              CoverPilot was founded to replace slow, outdated insurance aggregation processes with a clean, technology-driven platform that saves you money in under 2 minutes.
             </motion.p>
           </div>
         </section>
