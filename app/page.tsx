@@ -18,7 +18,12 @@ import {
   Users, 
   Clock, 
   Check,
-  ShieldCheck 
+  ShieldCheck,
+  Award,
+  BookOpen,
+  HelpCircle,
+  Car,
+  DollarSign
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -53,56 +58,86 @@ const partners = [
 const steps = [
   {
     title: "1. Enter Details",
-    desc: "Fill in our quick 3-minute form with your driver & car history.",
+    desc: "Fill in our quick 2-minute form with your driver & car history. We auto-populate vehicle specs to save you time.",
     icon: Sliders,
   },
   {
     title: "2. Real-Time Quotes",
-    desc: "Our engine scans 50+ trusted UK providers simultaneously.",
+    desc: "Our engine scans 50+ trusted UK providers simultaneously. Secure developer APIs pull underwriting rates directly.",
     icon: Search,
   },
   {
     title: "3. Smart Comparison",
-    desc: "Compare details like excess, coverage levels, and reviews side-by-side.",
+    desc: "Compare details like excess, coverage levels, and reviews side-by-side. Unbiased rating system isolates best options.",
     icon: Sparkles,
   },
   {
     title: "4. Instantly Covered",
-    desc: "Lock in your rate, complete payment safely, and drive away covered.",
+    desc: "Lock in your rate, complete payment safely, and drive away covered. Instant digital certificates sent to your inbox.",
     icon: FileCheck,
   },
 ]
 
-const benefits = [
-  { feature: "Comparison speed", cp: "Under 2 minutes", others: "10-15 minutes" },
-  { feature: "Hidden platform fees", cp: "£0 (Always free)", others: "Up to £15 added fee" },
-  { feature: "Quotes scanned", cp: "50+ leading insurers", others: "15-20 partners" },
-  { feature: "Smart Filter Engine", cp: "Dynamic personalized matching", others: "Basic static sorting" },
-  { feature: "Data Encryption", cp: "Bank-grade AES-256", others: "Standard HTTPS" },
+// Detailed Customer Success Stories
+const successStories = [
+  {
+    name: "Liam O'Connor",
+    age: "21",
+    location: "Manchester",
+    saving: "£620",
+    car: "Ford Fiesta (1.0L)",
+    story: "As a young driver, auto-renewals are absolute nightmares. My previous insurer sent me a renewal quote of £1,450. I entered my registration plate on CoverPilot, adjusted my voluntary excess, and matched with an Admiral first-time driver policy for £830. The process took under 3 minutes, and I had my insurance certificate in my inbox immediately.",
+    date: "May 2026",
+  },
+  {
+    name: "Priya Sharma",
+    age: "38",
+    location: "London",
+    saving: "£312",
+    car: "Tesla Model Y",
+    story: "EV insurance in London has risen dramatically over the past two years. Aggregators usually show me generic plans that lack custom battery cover. CoverPilot isolated a policy from Aviva that offered dedicated battery protection and unlimited windscreen cover for less than I paid last year. Extremely impressed by the clean fintech UI and lack of follow-up spam calls.",
+    date: "April 2026",
+  },
+  {
+    name: "Arthur Pendelton",
+    age: "64",
+    location: "Bath",
+    saving: "£284",
+    car: "Volkswagen Golf",
+    story: "I wanted a transparent policy with low compulsory excess and optional breakdown cover. CoverPilot's side-by-side grid let me easily filter out plans with hidden fees. I locked in a comprehensive policy with LV= Premier Cover that included home start breakdown for £284 less than my renewal notice. Fully regulated, clean, and highly secure.",
+    date: "March 2026",
+  },
 ]
 
-const reviews = [
+// Latest Guides Database
+const learningGuides = [
   {
-    name: "Sarah Jenkins",
-    role: "Astra Owner",
-    rating: 5,
-    text: "Saved £240 on my renewal quote! The form is so much simpler than old-school comparison sites. Highly recommend CoverPilot.",
-    date: "2 days ago",
+    title: "Decoding Your Renewal Quote: The Loyaty Penalty",
+    desc: "Understand why UK insurers routinely raise premiums on existing clients, and how active real-time quote comparison helps you legally bypass the loyalty tax.",
+    readTime: "4 min read",
+    category: "Savings Strategy",
   },
   {
-    name: "David Cole",
-    role: "Tesla Model Y Owner",
-    rating: 5,
-    text: "Excellent UX, direct integration with top UK insurers, and absolutely no spam calls after comparing. Just transparent deals.",
-    date: "1 week ago",
+    title: "Understanding EV Insurance Groupings",
+    desc: "Electric vehicles are sorted into specific risk groups due to specialized parts and battery replacement costs. Learn which EV models are cheapest to insure this year.",
+    readTime: "6 min read",
+    category: "EV Guides",
   },
   {
-    name: "Marcus Vance",
-    role: "Ford Fiesta Owner",
-    rating: 5,
-    text: "Quick, clean, and interactive. Got my quote and set up my policy in literally 4 minutes flat. Flawless experience.",
-    date: "3 weeks ago",
+    title: "motoring Convictions & NCD Recovery Guide",
+    desc: "Motoring claims or speeding convictions can dent your No Claims Discount (NCD) score. Here are three steps you can take to build your safety rating back fast.",
+    readTime: "5 min read",
+    category: "Insurance Help",
   },
+]
+
+const benefitsTable = [
+  { feature: "Quote Generation Speed", cp: "Under 2 minutes", others: "12-15 minutes of tedious input" },
+  { feature: "Broker Platform Fees", cp: "£0 (Always completely free)", others: "Up to £15-£25 markup fees added" },
+  { feature: "Database API Connections", cp: "50+ leading UK insurers mapped", others: "15-20 secondary brokers scanned" },
+  { feature: "Smart Filtration Engine", cp: "Direct personalization matches", others: "Standard static price-ordered charts" },
+  { feature: "Security & Encryption Standards", cp: "Bank-grade AES-256 data lock", others: "Standard insecure HTTP connections" },
+  { feature: "Post-Comparison Marketing Spam", cp: "Absolute zero calls or sold lists", others: "Dozens of third-party sales calls" },
 ]
 
 const faqs = [
@@ -148,18 +183,10 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
+        
         {/* HERO SECTION */}
         <section 
-          className="relative min-h-[90vh] lg:min-h-[98vh] flex items-center overflow-hidden bg-white border-b border-border/40"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 80% 20%, rgba(15, 98, 254, 0.08), transparent 45%),
-              radial-gradient(circle at 10% 80%, rgba(34, 197, 94, 0.04), transparent 45%),
-              linear-gradient(rgba(15, 98, 254, 0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(15, 98, 254, 0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: "100% 100%, 100% 100%, 48px 48px, 48px 48px",
-          }}
+          className="relative min-h-[90vh] lg:min-h-[98vh] flex items-center overflow-hidden bg-white border-b border-border/40 bg-premium-grid"
         >
           {/* Glowing concentric decorative rings */}
           <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-[600px] h-[600px] rounded-full border border-primary/5 -z-10" />
@@ -433,8 +460,59 @@ export default function Home() {
           </div>
         </section>
 
+        {/* WHY CHOOSE COVERPILOT SECTION */}
+        <section className="py-24 bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Unmatched Capabilities</Badge>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Built to Outperform Traditional Aggregators</h2>
+              <p className="text-muted-foreground leading-relaxed text-base">
+                We replaced outdated comparison loops with high-speed API direct matches. Compare quotes side-by-side in absolute clarity with zero broker-added premiums.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="border border-border/60 hover:shadow-md transition-all rounded-2.5xl p-6 bg-slate-50/30">
+                <CardContent className="p-0 space-y-4">
+                  <div className="h-10 w-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+                    <Award className="h-5.5 w-5.5" />
+                  </div>
+                  <h3 className="font-extrabold text-foreground text-lg">Direct Underwriting Connection</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                    By bypassing secondary broker aggregations, we request rates directly from insurer pricing engines. This removes markup layers, saving you up to 15% on similar policy quotes.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-border/60 hover:shadow-md transition-all rounded-2.5xl p-6 bg-slate-50/30">
+                <CardContent className="p-0 space-y-4">
+                  <div className="h-10 w-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+                    <ShieldCheck className="h-5.5 w-5.5" />
+                  </div>
+                  <h3 className="font-extrabold text-foreground text-lg">GDPR Privacy Guarantee</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                    Typical comparison networks distribute your cell and email to broker cold-call groups. CoverPilot guarantees an absolute spam-free shield. We lock down your data using bank-grade AES-256 keys.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-border/60 hover:shadow-md transition-all rounded-2.5xl p-6 bg-slate-50/30">
+                <CardContent className="p-0 space-y-4">
+                  <div className="h-10 w-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+                    <Sparkles className="h-5.5 w-5.5" />
+                  </div>
+                  <h3 className="font-extrabold text-foreground text-lg">Intelligent Recommender Systems</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                    Our dynamic filters search beyond just raw price. We balance ratings, voluntary excesses, claims handling speeds, and policy perks to isolate the ultimate Best Match options.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         {/* HOW IT WORKS */}
-        <section id="how-it-works" className="py-24 bg-white">
+        <section id="how-it-works" className="py-24 bg-slate-50/30 border-y border-border/40">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">Quote Comparison in 4 Easy Steps</h2>
@@ -445,7 +523,7 @@ export default function Home() {
               {steps.map((step, idx) => {
                 const Icon = step.icon
                 return (
-                  <Card key={idx} className="relative overflow-hidden group hover:border-primary/40 hover:shadow-md transition-all duration-300">
+                  <Card key={idx} className="relative overflow-hidden group hover:border-primary/40 hover:shadow-md transition-all duration-300 bg-white">
                     <CardContent className="p-8 space-y-4">
                       <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                         <Icon className="h-6 w-6" />
@@ -460,15 +538,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* BENEFITS COMPARISON */}
-        <section className="py-24 bg-slate-50/50 border-y border-border/40">
+        {/* BENEFITS COMPARISON TABLE */}
+        <section className="py-24 bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+              <Badge variant="outline" className="border-slate-350 uppercase tracking-widest font-bold text-xs py-1 px-3">Unbiased Transparency</Badge>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">Why Drivers Prefer CoverPilot</h2>
-              <p className="mt-4 text-muted-foreground">We aren't just another aggregator. We build tech-focused transparency directly into insurance comparisons.</p>
+              <p className="text-muted-foreground">We build tech-focused transparency directly into insurance comparisons.</p>
             </div>
 
-            <div className="mt-16 overflow-x-auto rounded-xl border border-border/60 bg-white shadow-sm max-w-4xl mx-auto">
+            <div className="overflow-x-auto rounded-2.5xl border border-border/60 bg-white shadow-sm max-w-4xl mx-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-50 border-b border-border/60">
@@ -481,7 +560,7 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border/60 text-sm">
-                  {benefits.map((benefit, idx) => (
+                  {benefitsTable.map((benefit, idx) => (
                     <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
                       <td className="p-5 font-semibold text-foreground">{benefit.feature}</td>
                       <td className="p-5 text-slate-900 font-bold flex items-center gap-2">
@@ -498,7 +577,7 @@ export default function Home() {
         </section>
 
         {/* SAVINGS CALCULATOR */}
-        <section id="calculator" className="py-24 bg-white">
+        <section id="calculator" className="py-24 bg-slate-50/30 border-y border-border/40">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
               
@@ -522,7 +601,7 @@ export default function Home() {
               </div>
 
               {/* Right Side: Calculator Card */}
-              <Card className="border border-border/80 shadow-lg shadow-slate-100 rounded-2xl overflow-hidden bg-slate-50/50">
+              <Card className="border border-border/80 shadow-lg shadow-slate-100 rounded-2xl overflow-hidden bg-white">
                 <CardContent className="p-8 space-y-6">
                   <div className="flex justify-between items-center border-b border-border/60 pb-6">
                     <h3 className="font-bold text-lg text-foreground">Configure Details</h3>
@@ -610,33 +689,74 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CUSTOMER REVIEWS */}
-        <section className="py-24 bg-slate-50/50 border-y border-border/40">
+        {/* CUSTOMER SUCCESS STORIES */}
+        <section className="py-24 bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">Loved by UK Drivers</h2>
-              <p className="mt-4 text-muted-foreground">See how drivers are securing lower premiums with CoverPilot.</p>
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+              <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Success Stories</Badge>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Real Case Studies from UK Drivers</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Read how individual drivers used CoverPilot's quote engine to legally bypass massive auto-renewal hikes.
+              </p>
             </div>
 
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {reviews.map((rev, idx) => (
-                <Card key={idx} className="border border-border/60 hover:shadow-md transition-all duration-200 bg-white">
-                  <CardContent className="p-8 space-y-6">
-                    {/* Stars */}
-                    <div className="flex gap-1">
-                      {Array.from({ length: rev.rating }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                      ))}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {successStories.map((story, idx) => (
+                <Card key={idx} className="border border-slate-200/80 rounded-2.5xl p-8 bg-slate-50/20 flex flex-col justify-between hover:shadow-md transition-all">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center text-xs font-bold text-muted-foreground">
+                      <span className="text-primary font-bold">{story.car}</span>
+                      <span>{story.date}</span>
                     </div>
-                    <p className="text-sm text-foreground/80 leading-relaxed italic">"{rev.text}"</p>
-                    <div className="flex justify-between items-center border-t border-border/40 pt-4 text-xs">
-                      <div>
-                        <div className="font-bold text-foreground">{rev.name}</div>
-                        <div className="text-muted-foreground font-medium">{rev.role}</div>
-                      </div>
-                      <span className="text-slate-400 font-semibold">{rev.date}</span>
+                    <p className="text-sm text-slate-650 leading-relaxed font-medium italic">
+                      "{story.story}"
+                    </p>
+                  </div>
+                  
+                  <div className="border-t border-slate-200/60 mt-6 pt-4 flex justify-between items-center text-xs">
+                    <div>
+                      <div className="font-extrabold text-foreground">{story.name} (Age {story.age})</div>
+                      <div className="text-slate-400 font-semibold">{story.location}</div>
                     </div>
-                  </CardContent>
+                    <div className="text-emerald-600 font-black text-right">
+                      <div className="text-base font-extrabold">{story.saving}</div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Annual Saving</span>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INSURANCE LEARNING CENTER / LATEST GUIDES */}
+        <section className="py-24 bg-slate-50/30 border-t border-border/40">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+              <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Learning Center</Badge>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">CoverPilot Insurance Guides</h2>
+              <p className="text-muted-foreground">Stay informed on policy jargon, underwriting standards, and rate protection strategies.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {learningGuides.map((guide, idx) => (
+                <Card key={idx} className="border border-border/60 hover:shadow-md transition-all rounded-2.5xl p-6 bg-white flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center text-xs font-bold">
+                      <span className="text-primary uppercase tracking-wider">{guide.category}</span>
+                      <span className="text-slate-400 font-semibold">{guide.readTime}</span>
+                    </div>
+                    <h3 className="font-extrabold text-foreground text-base leading-tight hover:text-primary transition-colors cursor-pointer">
+                      {guide.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                      {guide.desc}
+                    </p>
+                  </div>
+                  
+                  <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary cursor-pointer hover:underline">
+                    Read Article <ChevronRight className="h-4 w-4" />
+                  </div>
                 </Card>
               ))}
             </div>
@@ -644,7 +764,7 @@ export default function Home() {
         </section>
 
         {/* FAQ SECTION */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white border-t border-border/40">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">Frequently Asked Questions</h2>

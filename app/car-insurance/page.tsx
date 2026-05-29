@@ -12,7 +12,11 @@ import {
   HelpCircle,
   Star,
   Clock,
-  TrendingDown
+  TrendingDown,
+  DollarSign,
+  Info,
+  Award,
+  Users
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -20,6 +24,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const levels = [
   {
@@ -57,9 +62,30 @@ const levels = [
   },
 ]
 
+const premiumFactors = [
+  { factor: "Age & Driving Experience", impact: "High", desc: "Drivers under 25 statistically have higher claim rates, placing them in higher risk categories. Rates steadily decline with experience." },
+  { factor: "No Claims Discount (NCD)", impact: "Critical", desc: "Accumulating years of claim-free driving is the most powerful discount factor, saving up to 60% on comprehensive premiums." },
+  { factor: "Vehicle Insurance Group", impact: "High", desc: "Vehicles are classified into groups 1 to 50 based on engine size, replacement parts costs, safety features, and initial purchase value." },
+  { factor: "Annual Mileage", impact: "Medium", desc: "Fewer miles on the road directly translates to lower underwriting risk. Commuter usage typically adds moderate cost." },
+  { factor: "Postal Code (Location)", impact: "Medium", desc: "Areas with high vehicle theft records, traffic congestion, or localized flood risks generally carry higher base rates." },
+]
+
+const savingTips = [
+  { title: "Optimize Voluntary Excess", desc: "Raising your voluntary excess from £150 to £250 or £500 lowers the insurer's liability, resulting in an immediate 10-15% discount on annual premiums." },
+  { title: "Accurately Estimate Mileage", desc: "Overestimating your mileage adds unnecessary cost. Look at past MOT certificates to calculate a precise annual figure." },
+  { title: "Install Approved Security", desc: "Thatcham-approved immobilizers, trackers, or locking wheel nuts decrease security risk groups, saving you money." },
+  { title: "Park Safely Overnight", desc: "Parking on a private driveway or locked garage instead of a public road lowers theft risks, decreasing underwritten premiums." },
+]
+
+const insuranceFaqs = [
+  { q: "What is the compulsory excess on a car insurance policy?", a: "Compulsory excess is a non-negotiable deductible set directly by the insurer based on your driver age and vehicle type. It cannot be altered and must be paid in the event of an at-fault claim, alongside your chosen voluntary excess." },
+  { q: "Can I drive other cars on my comprehensive policy?", a: "In the UK, many comprehensive policies include 'Driving Other Cars' (DOC) cover, but this usually limits protection to Third Party Only. We recommend checking your specific certificate of insurance before driving another vehicle." },
+  { q: "What is No Claims Discount (NCD) Protection?", a: "NCD protection is an optional policy add-on that allows you to make one or two at-fault claims within a specific period without resetting your accumulated discount years. It preserves your earned discount percentage." },
+]
+
 export default function CarInsurance() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-slate-50/20">
       <Navbar />
 
       <main className="flex-grow">
@@ -148,7 +174,7 @@ export default function CarInsurance() {
                     <div className="flex justify-between items-start">
                       <div>
                         <span className="font-black text-xs text-primary border border-primary/20 px-2 py-0.5 rounded bg-white">LV=</span>
-                        <h4 className="font-extrabold text-slate-900 mt-2 text-sm">LV= Premium Comp</h4>
+                        <h4 className="font-extrabold text-slate-900 mt-2 text-sm">LV= Premier Comp</h4>
                       </div>
                       <div className="text-right">
                         <div className="text-lg font-black text-slate-900">£387</div>
@@ -172,6 +198,20 @@ export default function CarInsurance() {
               </div>
 
             </div>
+          </div>
+        </section>
+
+        {/* SECTION 1: WHAT IS CAR INSURANCE? */}
+        <section className="py-24 bg-white">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
+            <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Deep Dive Guide</Badge>
+            <h2 className="text-3xl font-extrabold text-foreground tracking-tight">What Is Car Insurance in the UK?</h2>
+            <p className="text-slate-650 leading-relaxed text-base font-medium">
+              In the United Kingdom, car insurance is a legal mandate under the Road Traffic Act 1988. It represents a binding financial contract between you and an underwriter: in exchange for premium payments, the insurer protects you against crippling financial costs resulting from auto-accidents, theft, fire, or third-party liability claims.
+            </p>
+            <p className="text-slate-650 leading-relaxed text-base font-medium">
+              Driving a motor vehicle on public roads without valid coverage carries severe penalties, including a minimum £300 fixed penalty fine, 6 penalty points on your license, or potential vehicle seizure. CoverPilot ensures you compare and secure valid, fully regulated policies in minutes.
+            </p>
           </div>
         </section>
 
@@ -234,16 +274,16 @@ export default function CarInsurance() {
           </div>
         </section>
 
-        {/* HOW PREMIUMS ARE CALCULATED */}
+        {/* SECTION 4 & 5: HOW PREMIUMS ARE CALCULATED */}
         <section className="py-24 bg-white">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               
               <div className="space-y-6">
                 <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Educational Guide</Badge>
                 <h2 className="text-3xl font-extrabold text-foreground leading-tight">What Determines Your Insurance Premium?</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  UK insurers analyze dozens of data variables to evaluate risk. Understanding these metrics can help you take actionable steps to secure lower insurance rates:
+                  UK insurers analyze dozens of risk metrics to evaluate the mathematical probability of a claim. Understanding these variables empowers you to optimize your driving profile:
                 </p>
                 
                 <div className="space-y-4">
@@ -269,28 +309,90 @@ export default function CarInsurance() {
                 </div>
               </div>
 
-              {/* Security info box */}
-              <div className="bg-slate-50 border border-border/80 rounded-2.5xl p-8 space-y-6">
-                <div className="flex items-center gap-3 border-b border-border/60 pb-5">
-                  <ShieldCheck className="h-8 w-8 text-primary" />
-                  <div>
-                    <h3 className="font-bold text-foreground">FCA Regulated Platforms</h3>
-                    <p className="text-xs text-muted-foreground">Always choose regulated quote platforms.</p>
-                  </div>
+              {/* Factors list card */}
+              <Card className="border border-border/80 shadow-md p-6 bg-slate-50/20 rounded-2.5xl space-y-4">
+                <h3 className="font-extrabold text-foreground text-base border-b pb-3 border-slate-200">Main Risk Variables</h3>
+                <div className="divide-y divide-slate-100 text-xs">
+                  {premiumFactors.map((item, idx) => (
+                    <div key={idx} className="py-3 flex justify-between gap-4">
+                      <div>
+                        <div className="font-bold text-foreground">{item.factor}</div>
+                        <p className="text-slate-400 font-medium mt-0.5 max-w-sm">{item.desc}</p>
+                      </div>
+                      <Badge variant="outline" className="h-fit font-bold border-slate-350">{item.impact} Impact</Badge>
+                    </div>
+                  ))}
                 </div>
+              </Card>
 
-                <p className="text-sm text-foreground/80 leading-relaxed">
-                  CoverPilot partners only with FSA/FCA registered institutions. This ensures that every quote presented represents a real, legally valid underwriting contract.
-                </p>
+            </div>
+          </div>
+        </section>
 
-                <Link href="/compare" className="block pt-2">
-                  <Button className="w-full font-bold flex gap-2 justify-center py-5">
-                    Start Your Search Now
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
+        {/* SECTION 6: TIPS TO REDUCE YOUR PREMIUM */}
+        <section className="py-24 bg-slate-50/50 border-t border-border/40">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+              <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Actionable Advice</Badge>
+              <h2 className="text-3xl font-extrabold text-foreground tracking-tight">Four Pro-Tips to Lower Premium Rates</h2>
+              <p className="text-muted-foreground">Follow these guidelines prior to comparing quotes to maximize eligible discounts.</p>
+            </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {savingTips.map((tip, idx) => (
+                <Card key={idx} className="border border-border/60 p-6 bg-white rounded-2.5xl shadow-sm hover:shadow-md transition-all">
+                  <CardContent className="p-0 space-y-3">
+                    <h3 className="font-extrabold text-foreground text-base flex items-center gap-2">
+                      <div className="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-xs font-bold">{idx + 1}</div>
+                      {tip.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                      {tip.desc}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 8: FAQ ACCORDION */}
+        <section className="py-24 bg-white border-t border-border/40">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">Car Insurance FAQs</h2>
+              <p className="mt-4 text-muted-foreground">Quick answers to regulatory and policy requirements.</p>
+            </div>
+
+            <Accordion type="single" collapsible className="w-full space-y-3">
+              {insuranceFaqs.map((faq, idx) => (
+                <AccordionItem key={idx} value={`item-${idx}`} className="border border-border/80 rounded-xl px-6 bg-slate-50/30 hover:bg-slate-50/50 transition-colors duration-150">
+                  <AccordionTrigger className="text-base font-bold text-slate-900 hover:no-underline py-5">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-slate-650 pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
+        {/* SECTION 12: CTA BANNER */}
+        <section className="py-20 bg-slate-900 text-white text-center">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to see your options?</h2>
+            <p className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+              Use our modern QuoteFlow to compare over 50 of the UK's leading insurance companies in real-time.
+            </p>
+            <div className="pt-4">
+              <Link href="/compare">
+                <Button size="lg" className="font-bold bg-primary hover:bg-primary/95 flex gap-2 justify-center mx-auto py-6 px-8">
+                  Get Quotes Now
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

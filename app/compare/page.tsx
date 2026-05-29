@@ -632,6 +632,80 @@ export default function CompareQuotes() {
                   )}
                 </div>
 
+                {/* DETAILED CONTENT SECTION BELOW RESULTS FOR SEO & TRUST */}
+                <div className="border-t border-slate-200 pt-16 mt-16 space-y-12 max-w-4xl mx-auto text-left">
+                  
+                  {/* Why Recommended */}
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-extrabold text-foreground tracking-tight flex items-center gap-2">
+                      <Sparkles className="h-5 w-5 text-primary" /> Why These Quotes Are Recommended
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-semibold">
+                      CoverPilot's actuarial matchmaking system operates on multi-dimensional scoring equations. Instead of simply ordering results by raw monthly price, we balance policy quality metrics: voluntary excess choices, insurer claims payout rating histories, and integrated value perks (like included windscreen cover or courtesy cars).
+                    </p>
+                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-semibold">
+                      A policy that is £2 cheaper but carries a £450 compulsory excess is mathematically riskier than a slightly higher monthly option with a flat £150 excess. Our recommender isolates the ultimate balance of safety and cost.
+                    </p>
+                  </div>
+
+                  {/* Coverage Breakdown Table */}
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-extrabold text-foreground tracking-tight">Key Cover Features Compared</h3>
+                    <p className="text-xs text-slate-400 font-semibold">Ensure you understand what is included before completing purchase details.</p>
+                    
+                    <div className="overflow-x-auto rounded-xl border border-slate-250/50 bg-white">
+                      <table className="w-full text-xs font-semibold text-slate-700 text-left border-collapse">
+                        <thead>
+                          <tr className="bg-slate-50 border-b border-slate-200">
+                            <th className="p-3 font-bold text-foreground">Feature</th>
+                            <th className="p-3 font-bold text-slate-600">LV= premier</th>
+                            <th className="p-3 font-bold text-slate-600">Aviva Online</th>
+                            <th className="p-3 font-bold text-slate-600">Admiral Gold</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 font-semibold">
+                          <tr className="hover:bg-slate-50/50"><td className="p-3">Windscreen Cover</td><td className="p-3 text-emerald-600 font-bold">Unlimited</td><td className="p-3">£150 limit</td><td className="p-3">Optional add-on</td></tr>
+                          <tr className="hover:bg-slate-50/50"><td className="p-3">Courtesy Car</td><td className="p-3 text-emerald-600 font-bold">Included (Standard)</td><td className="p-3 text-emerald-600 font-bold">Included (Standard)</td><td className="p-3">Optional add-on</td></tr>
+                          <tr className="hover:bg-slate-50/50"><td className="p-3">Legal Protection</td><td className="p-3">Optional (£20)</td><td className="p-3 text-emerald-600 font-bold">Included (Premier)</td><td className="p-3">Optional (£22)</td></tr>
+                          <tr className="hover:bg-slate-50/50"><td className="p-3">Europe Cover</td><td className="p-3">90 Days</td><td className="p-3">90 Days</td><td className="p-3">30 Days</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Insurance Terms Glossary */}
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-extrabold text-foreground tracking-tight">Motoring Jargon Explained</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Card className="border border-slate-150 p-4 rounded-xl bg-slate-50/30">
+                        <CardContent className="p-0 space-y-2">
+                          <div className="font-bold text-foreground text-xs uppercase tracking-wider">No Claims Discount (NCD)</div>
+                          <p className="text-[11px] text-slate-450 leading-relaxed font-semibold">
+                            A discount on your premium awarded for every consecutive year you drive without making an at-fault claim. Can save up to 60% over 5+ years.
+                          </p>
+                        </CardContent>
+                      </Card>
+                      <Card className="border border-slate-150 p-4 rounded-xl bg-slate-50/30">
+                        <CardContent className="p-0 space-y-2">
+                          <div className="font-bold text-foreground text-xs uppercase tracking-wider">Voluntary vs Compulsory Excess</div>
+                          <p className="text-[11px] text-slate-450 leading-relaxed font-semibold">
+                            Compulsory is set by the underwriter and non-negotiable. Voluntary is set by you; raising it reduces monthly premium, but increases your out-of-pocket claims cost.
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+
+                  {/* Comparison Methodology Statement */}
+                  <div className="space-y-3 pt-6 border-t border-slate-100">
+                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Our Comparison Methodology</h4>
+                    <p className="text-[11px] text-slate-400 leading-relaxed font-medium">
+                      CoverPilot queries the secure APIs of partner underwriters under licensed FCA distribution guidelines. We do not manipulate quote values, alter underwriting parameters, or prioritize premium packages for marketing payouts. All results are direct, transparent, and binding contracts.
+                    </p>
+                  </div>
+
+                </div>
+
               </motion.div>
             )}
 
