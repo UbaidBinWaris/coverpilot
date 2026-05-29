@@ -1,0 +1,144 @@
+"use client"
+
+import Link from "next/link"
+import { motion } from "framer-motion"
+import { HelpCircle, Shield, Sliders, FileCheck, ArrowRight } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Badge } from "@/components/ui/badge"
+import { Navbar } from "@/components/layout/navbar"
+import { Footer } from "@/components/layout/footer"
+
+const categories = [
+  {
+    title: "General Platform Questions",
+    icon: HelpCircle,
+    items: [
+      {
+        q: "What is CoverPilot?",
+        a: "CoverPilot is a high-speed, modern insurance comparison platform built to locate competitive car insurance premiums. We match driver details against leading UK providers, sorting policies by value, coverage level, and voluntary excess."
+      },
+      {
+        q: "How does CoverPilot make money?",
+        a: "We do not charge any comparison fees. Our platform is 100% free to use. When you purchase a policy through our link, the selected insurer pays us a commission. This has absolutely no effect on your premium rate."
+      },
+      {
+        q: "Is CoverPilot regulated by the FCA?",
+        a: "Yes. Our partner brokers and insurers are fully licensed and registered under the UK Financial Conduct Authority (FCA), ensuring that every quote we pull is completely compliant and legally valid."
+      }
+    ]
+  },
+  {
+    title: "Comparing Quotes",
+    icon: Sliders,
+    items: [
+      {
+        q: "What information do I need to prepare before starting a quote?",
+        a: "To get quotes in under 3 minutes, you'll want to have: 1. Your car registration plate number, 2. Your estimated annual mileage, 3. Details of any claims or accidents in the past 5 years, and 4. Your driving license history."
+      },
+      {
+        q: "Why are my quotes different from other aggregators?",
+        a: "We connect directly via secure developer APIs to the real-time underwriting systems of over 50 insurers. We avoid intermediate broker markup fees, meaning the prices you see here are often direct and clean."
+      },
+      {
+        q: "Can I save my progress and resume later?",
+        a: "Currently, our form is optimized to be completed in one sitting (taking less than 3 minutes). However, we store a secure local session cookie so if you accidentally close the browser, your inputs will be remembered."
+      }
+    ]
+  },
+  {
+    title: "Policies & Coverage",
+    icon: FileCheck,
+    items: [
+      {
+        q: "What is Voluntary Excess vs. Compulsory Excess?",
+        a: "Compulsory excess is set by the insurer and cannot be changed. Voluntary excess is the amount you choose to pay out-of-pocket in the event of a claim. Raising your voluntary excess usually reduces your monthly/yearly premium, but means you pay more if an accident occurs."
+      },
+      {
+        q: "Can I add secondary drivers to my quote?",
+        a: "Yes. In our main multi-step quote flow, you will have options to append named secondary drivers. This can sometimes lower your premium, especially if the secondary driver is older or has a clean driving record."
+      }
+    ]
+  }
+]
+
+export default function FAQs() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+
+      <main className="flex-grow py-12 md:py-20 bg-slate-50/50">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-12">
+          
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Help Center</Badge>
+            <h1 className="text-3.5xl font-black text-foreground tracking-tight">Frequently Asked Questions</h1>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Find answers to common questions about CoverPilot's quote engine, coverage options, and regulatory standards.
+            </p>
+          </div>
+
+          {/* Accordion Categories */}
+          <div className="space-y-10">
+            {categories.map((cat, catIdx) => {
+              const Icon = cat.icon
+              return (
+                <div key={catIdx} className="space-y-4">
+                  <div className="flex items-center gap-3 border-b border-border/60 pb-3">
+                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <h2 className="text-lg font-bold text-foreground">{cat.title}</h2>
+                  </div>
+
+                  <Accordion type="single" collapsible className="w-full space-y-3">
+                    {cat.items.map((item, idx) => (
+                      <AccordionItem 
+                        key={idx} 
+                        value={`cat-${catIdx}-item-${idx}`} 
+                        className="border border-border/80 rounded-xl px-6 bg-white hover:bg-slate-50/50 transition-colors duration-150 shadow-sm"
+                      >
+                        <AccordionTrigger className="text-sm font-bold text-foreground hover:no-underline py-4">
+                          {item.q}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-xs leading-relaxed text-slate-600 pb-4">
+                          {item.a}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Bottom Banner */}
+          <div className="bg-slate-900 text-white rounded-3xl p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-md">
+            <div className="space-y-1">
+              <h3 className="text-xl font-bold">Still have questions?</h3>
+              <p className="text-xs text-slate-400">Our customer support agents are happy to assist you.</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/contact">
+                <Button className="font-bold bg-white text-slate-900 hover:bg-slate-100 py-5 px-6">
+                  Contact Support
+                </Button>
+              </Link>
+              <Link href="/compare">
+                <Button className="font-bold bg-primary hover:bg-primary/95 py-5 px-6 flex gap-1.5 group">
+                  Start Comparing
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  )
+}
