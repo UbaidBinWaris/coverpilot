@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Shield, Mail, Phone, MapPin, ExternalLink } from "lucide-react"
+import { Shield, Mail, MapPin, ExternalLink } from "lucide-react"
 
 const footerSections = [
   {
@@ -33,28 +33,28 @@ const footerSections = [
 
 export function Footer() {
   return (
-    <footer className="w-full bg-slate-900 border-t border-slate-800 text-slate-400 py-16">
+    <footer className="w-full bg-slate-950 border-t border-slate-800/80 text-slate-400 py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 pb-12 border-b border-slate-850">
           
           {/* Brand and Description */}
           <div className="lg:col-span-2 space-y-6">
-            <Link href="/" className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5 group">
               <Image
                 src="/logo.png"
                 alt="CoverPilot Logo"
                 width={32}
                 height={32}
-                className="h-8 w-8 object-contain brightness-0 invert"
+                className="h-8 w-8 object-contain brightness-0 invert transition-transform duration-300 group-hover:rotate-12"
               />
               <span className="text-xl font-bold tracking-tight text-white">
-                Cover<span className="text-primary">Pilot</span>
+                Cover<span className="text-gradient font-extrabold">Pilot</span>
               </span>
             </Link>
-            <p className="text-sm max-w-sm text-slate-400 leading-relaxed">
-              Compare car insurance coverage and policy benefits from the UK's leading providers in minutes. Safe, transparent, and direct.
+            <p className="text-sm max-w-sm text-slate-400 leading-relaxed font-medium">
+              Compare car insurance coverage and policy benefits from the UK&apos;s leading providers in minutes. Safe, transparent, and direct.
             </p>
-            <div className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full w-fit">
+            <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full w-fit">
               <Shield className="h-4 w-4" />
               FCA Regulated & Fully Secure
             </div>

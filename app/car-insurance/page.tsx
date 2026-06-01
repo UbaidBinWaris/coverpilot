@@ -7,16 +7,9 @@ import {
   Sparkles, 
   Check, 
   ArrowRight, 
-  ShieldCheck, 
   Car, 
-  HelpCircle,
   Star,
-  Clock,
-  TrendingDown,
-  DollarSign,
-  Info,
-  Award,
-  Users
+  Clock
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -215,39 +208,38 @@ export default function CarInsurance() {
           </div>
         </section>
 
-        {/* COMPARISON CARDS */}
-        <section className="py-20 bg-slate-50/50 border-y border-border/40">
+        <section className="py-20 bg-slate-100/30 border-y border-slate-200/50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-extrabold text-foreground">Choose Your Level of Cover</h2>
-              <p className="mt-4 text-muted-foreground">Select the coverage type that fits your driving habits and budget.</p>
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <h2 className="text-3.5xl sm:text-4.5xl font-black text-foreground tracking-tight">Choose Your Level of Cover</h2>
+              <p className="text-slate-600 font-semibold leading-relaxed">Select the coverage type that fits your driving habits and budget.</p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {levels.map((level, idx) => (
                 <Card 
                   key={idx} 
-                  className={`border bg-white rounded-2.5xl overflow-hidden flex flex-col justify-between transition-all duration-300 ${
+                  className={`overflow-hidden flex flex-col justify-between transition-all duration-300 rounded-[2rem] ${
                     level.recommended 
-                      ? "border-primary shadow-lg shadow-primary/5 scale-105" 
-                      : "border-border/80 hover:border-slate-350"
+                      ? "border-2 border-primary bg-white/95 shadow-xl shadow-primary/5 scale-105" 
+                      : "border border-white/50 glass-card hover:border-slate-350 hover:bg-white/90 hover:scale-[1.01]"
                   }`}
                 >
                   <CardContent className="p-8 space-y-6 flex-grow flex flex-col justify-between">
                     <div className="space-y-4">
                       {level.recommended && (
-                        <Badge variant="accent" className="px-3 py-1 font-bold uppercase tracking-wider text-[10px] w-fit">
-                          <Sparkles className="h-3 w-3 mr-1 fill-white" /> Recommended
+                        <Badge variant="accent" className="px-3 py-1 font-black uppercase tracking-wider text-[10px] w-fit shadow-sm bg-primary/10 text-primary border-primary/20">
+                          <Sparkles className="h-3 w-3 mr-1 fill-primary" /> Recommended
                         </Badge>
                       )}
                       <h3 className="text-xl font-extrabold text-foreground">{level.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{level.desc}</p>
+                      <p className="text-sm text-slate-550 leading-relaxed font-semibold">{level.desc}</p>
                       
-                      <div className="border-t border-border/60 my-6" />
+                      <div className="border-t border-slate-200/60 my-6" />
 
                       <ul className="space-y-3">
                         {level.features.map((feat, fIdx) => (
-                          <li key={fIdx} className="flex items-start gap-2.5 text-sm text-foreground/80 font-medium">
+                          <li key={fIdx} className="flex items-start gap-2.5 text-sm text-slate-700 font-semibold">
                             <div className="h-4 w-4 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0 mt-0.5">
                               <Check className="h-2.5 w-2.5 stroke-[3]" />
                             </div>
@@ -260,8 +252,11 @@ export default function CarInsurance() {
                     <div className="pt-8">
                       <Link href="/compare">
                         <Button 
-                          className="w-full font-bold py-5"
-                          variant={level.recommended ? "default" : "outline"}
+                          className={`w-full font-bold py-5.5 rounded-xl cursor-pointer transition-all duration-200 ${
+                            level.recommended 
+                              ? "bg-gradient-to-r from-primary to-secondary text-white border-0 shadow-lg shadow-primary/10 hover:scale-[1.02]" 
+                              : "border border-slate-200 text-slate-700 hover:bg-slate-50"
+                          }`}
                         >
                           Compare {level.title.split(" ")[0]}
                         </Button>
@@ -384,7 +379,7 @@ export default function CarInsurance() {
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to see your options?</h2>
             <p className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-              Use our modern QuoteFlow to compare over 50 of the UK's leading insurance companies in real-time.
+              Use our modern QuoteFlow to compare over 50 of the UK&apos;s leading insurance companies in real-time.
             </p>
             <div className="pt-4">
               <Link href="/compare">

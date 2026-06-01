@@ -12,10 +12,8 @@ import {
   Users, 
   Car, 
   ShieldCheck, 
-  Percent, 
   Clock, 
   ChevronDown, 
-  ChevronUp, 
   ThumbsUp, 
   ThumbsDown,
   Sparkles,
@@ -25,7 +23,6 @@ import {
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
@@ -239,24 +236,24 @@ export default function HelpCenter() {
                     key={cat.id}
                     whileHover={{ y: -5 }}
                     onClick={() => setSelectedCategory(isSelected ? null : cat.id)}
-                    className={`cursor-pointer border rounded-2.5xl p-6 bg-white transition-all duration-200 relative overflow-hidden flex flex-col justify-between ${
+                    className={`cursor-pointer transition-all duration-200 relative overflow-hidden flex flex-col justify-between rounded-[2rem] p-6 ${
                       isSelected 
-                        ? "border-primary shadow-md shadow-primary/5 ring-1 ring-primary"
-                        : "border-slate-200/80 shadow-sm hover:shadow-md hover:border-slate-350"
+                        ? "border-2 border-primary bg-white/95 shadow-lg shadow-primary/5"
+                        : "border border-white/50 glass-card hover:shadow-md hover:border-slate-350 hover:bg-white/85"
                     }`}
                   >
                     <div className="space-y-4">
-                      <div className={`h-11 w-11 rounded-xl flex items-center justify-center transition-colors ${
-                        isSelected ? "bg-primary text-white" : "bg-primary/5 text-primary"
+                      <div className={`h-11 w-11 rounded-xl flex items-center justify-center transition-all ${
+                        isSelected ? "bg-gradient-to-r from-primary to-secondary text-white" : "bg-primary/5 text-primary shadow-sm"
                       }`}>
                         <Icon className="h-5.5 w-5.5" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-foreground text-base leading-tight">{cat.title}</h3>
-                        <p className="text-xs text-slate-400 mt-1 leading-relaxed font-medium">{cat.desc}</p>
+                        <h3 className="font-extrabold text-foreground text-base leading-tight">{cat.title}</h3>
+                        <p className="text-xs text-slate-500 mt-1.5 leading-relaxed font-semibold">{cat.desc}</p>
                       </div>
                     </div>
-                    <div className="text-slate-400 font-bold text-[10px] uppercase tracking-wider mt-6 flex justify-between items-center">
+                    <div className="text-slate-450 font-black text-[10px] uppercase tracking-widest mt-6 flex justify-between items-center">
                       <span>{cat.count} Articles</span>
                       <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
@@ -339,10 +336,10 @@ export default function HelpCenter() {
                       <motion.div
                         key={art.id}
                         layout
-                        className={`border rounded-2.5xl bg-white overflow-hidden transition-all duration-200 ${
+                        className={`overflow-hidden transition-all duration-200 rounded-2xl ${
                           isExpanded 
-                            ? "border-primary shadow-md shadow-primary/5" 
-                            : "border-slate-200/80 shadow-sm hover:border-slate-350"
+                            ? "border-2 border-primary bg-white/95 shadow-md shadow-primary/5" 
+                            : "border border-white/50 glass-card hover:border-slate-350 hover:bg-white/85"
                         }`}
                       >
                         {/* Question trigger bar */}
@@ -350,7 +347,7 @@ export default function HelpCenter() {
                           onClick={() => setExpandedArticle(isExpanded ? null : art.id)}
                           className="p-6 cursor-pointer flex justify-between items-center select-none hover:bg-slate-50/30 transition-colors"
                         >
-                          <span className="text-sm sm:text-base font-bold text-foreground hover:text-primary">
+                          <span className="text-sm sm:text-base font-bold text-foreground hover:text-primary transition-colors">
                             {art.question}
                           </span>
                           <div className={`h-6 w-6 rounded-full flex items-center justify-center border border-slate-200 text-slate-400 shrink-0 ml-4 transition-transform duration-200 ${
@@ -367,34 +364,34 @@ export default function HelpCenter() {
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="border-t border-slate-100 bg-slate-50/30 p-6 space-y-6"
+                            className="border-t border-slate-100 bg-slate-50/50 p-6 space-y-6"
                           >
-                            <p className="text-sm leading-relaxed text-slate-600 font-medium">
+                            <p className="text-sm leading-relaxed text-slate-655 font-bold">
                               {art.answer}
                             </p>
 
                             {/* Related topics pills */}
                             <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100/80 text-xs">
-                              <span className="text-slate-400 font-bold uppercase tracking-wider">Related Topics:</span>
+                              <span className="text-slate-450 font-black uppercase tracking-widest">Related Topics:</span>
                               {art.related.map((pill) => (
-                                <span key={pill} className="bg-slate-100 border border-slate-200 text-slate-500 font-semibold px-2 py-0.5 rounded-full capitalize">
+                                <span key={pill} className="bg-slate-100 border border-slate-200 text-slate-600 font-bold px-2.5 py-0.5 rounded-full capitalize">
                                   {pill.replace("-", " ")}
                                 </span>
                               ))}
                             </div>
 
                             {/* Feedback voting widget */}
-                            <div className="flex justify-between items-center pt-2 text-xs font-semibold text-slate-500">
+                            <div className="flex justify-between items-center pt-2 text-xs font-bold text-slate-500">
                               <span>Was this answer helpful?</span>
                               
                               <div className="flex items-center gap-2">
                                 <button
                                   disabled={!!rating}
                                   onClick={() => handleRate(art.id, "yes")}
-                                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all ${
+                                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                                     rating === "yes"
-                                      ? "bg-emerald-500 border-emerald-500 text-white shadow-sm"
-                                      : "bg-white border-slate-200 hover:border-slate-400 text-slate-600"
+                                      ? "bg-emerald-600 border-emerald-600 text-white shadow-sm"
+                                      : "bg-white border-slate-200 hover:border-slate-400 text-slate-700"
                                   }`}
                                 >
                                   <ThumbsUp className="h-3.5 w-3.5" />
@@ -403,10 +400,10 @@ export default function HelpCenter() {
                                 <button
                                   disabled={!!rating}
                                   onClick={() => handleRate(art.id, "no")}
-                                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all ${
+                                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                                     rating === "no"
-                                      ? "bg-rose-500 border-rose-500 text-white shadow-sm"
-                                      : "bg-white border-slate-200 hover:border-slate-400 text-slate-600"
+                                      ? "bg-rose-600 border-rose-600 text-white shadow-sm"
+                                      : "bg-white border-slate-200 hover:border-slate-400 text-slate-700"
                                   }`}
                                 >
                                   <ThumbsDown className="h-3.5 w-3.5" />

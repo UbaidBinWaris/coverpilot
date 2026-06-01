@@ -6,15 +6,11 @@ import {
   Shield, 
   Heart, 
   Target, 
-  Sparkles, 
   ArrowRight, 
-  ShieldCheck, 
   Cpu, 
   Briefcase, 
-  Network, 
   Calendar,
   Lock,
-  Search,
   Check
 } from "lucide-react"
 
@@ -110,7 +106,7 @@ export default function About() {
               <Badge variant="outline" className="border-slate-300 font-bold uppercase tracking-wider text-xs">Our Process</Badge>
               <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">How CoverPilot Works</h2>
               <p className="text-slate-500 leading-relaxed text-sm max-w-lg mx-auto">
-                We've built direct developer integrations that pull features within milliseconds.
+                We&apos;ve built direct developer integrations that pull features within milliseconds.
               </p>
             </div>
 
@@ -198,13 +194,13 @@ export default function About() {
               {values.map((val, idx) => {
                 const Icon = val.icon
                 return (
-                  <Card key={idx} className="border border-border/60 hover:shadow-md transition-all duration-200 bg-white">
+                  <Card key={idx} className="border border-white/50 glass-card premium-shadow hover:shadow-xl transition-all duration-300 hover:scale-[1.02] rounded-3xl bg-white/70">
                     <CardContent className="p-8 space-y-4">
-                      <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary">
+                      <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary shadow-sm">
                         <Icon className="h-6 w-6" />
                       </div>
-                      <h3 className="text-lg font-bold text-foreground">{val.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{val.desc}</p>
+                      <h3 className="text-lg font-extrabold text-foreground">{val.title}</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed font-medium">{val.desc}</p>
                     </CardContent>
                   </Card>
                 )
@@ -224,11 +220,11 @@ export default function About() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {teamMembers.map((member, idx) => (
-                <Card key={idx} className="border border-slate-200/80 rounded-2.5xl p-6 bg-slate-50/20 shadow-sm">
+                <Card key={idx} className="border border-white/50 glass-card premium-shadow hover:shadow-xl transition-all duration-300 hover:scale-[1.02] rounded-[2rem] p-6 bg-slate-50/30">
                   <CardContent className="p-0 space-y-3">
                     <h4 className="font-extrabold text-slate-900 text-base">{member.name}</h4>
-                    <div className="text-xs text-primary font-bold">{member.role}</div>
-                    <p className="text-xs text-slate-500 leading-relaxed font-semibold">{member.bio}</p>
+                    <div className="text-xs text-primary font-black uppercase tracking-wider">{member.role}</div>
+                    <p className="text-xs text-slate-600 leading-relaxed font-semibold">{member.bio}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -247,11 +243,11 @@ export default function About() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
               {roadmap.map((item, idx) => (
-                <Card key={idx} className="border border-border/60 bg-white rounded-2.5xl p-6 relative overflow-hidden">
+                <Card key={idx} className="border border-white/50 glass-card premium-shadow hover:shadow-xl transition-all duration-300 hover:scale-[1.02] rounded-2xl p-6 relative overflow-hidden bg-white/70">
                   <div className="space-y-4">
                     <span className="text-[10px] font-black text-primary uppercase tracking-widest flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {item.date}</span>
                     <h4 className="font-extrabold text-slate-900 text-sm">{item.title}</h4>
-                    <p className="text-xs text-slate-450 leading-relaxed font-semibold">{item.desc}</p>
+                    <p className="text-xs text-slate-550 leading-relaxed font-semibold">{item.desc}</p>
                   </div>
                 </Card>
               ))}
@@ -297,7 +293,7 @@ export default function About() {
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to see your options?</h2>
             <p className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-              Use our modern QuoteFlow to compare over 50 of the UK's leading insurance companies in real-time.
+              Use our modern QuoteFlow to compare over 50 of the UK&apos;s leading insurance companies in real-time.
             </p>
             <div className="pt-4">
               <Link href="/compare">

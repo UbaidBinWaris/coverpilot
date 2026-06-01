@@ -123,7 +123,7 @@ export default function Contact() {
 
             {/* Contact Form Card */}
             <div className="lg:col-span-2">
-              <Card className="border border-border/80 shadow-md rounded-2.5xl bg-white overflow-hidden">
+              <Card className="border border-white/60 glass-panel premium-shadow-lg rounded-[2rem] overflow-hidden bg-white/80">
                 <CardContent className="p-8 md:p-10 space-y-6">
                   
                   <AnimatePresence mode="wait">
@@ -137,36 +137,36 @@ export default function Contact() {
                         exit={{ opacity: 0 }}
                       >
                         {/* Name */}
-                        <div className="space-y-2">
-                          <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Your Name</label>
+                        <div className="space-y-2.5">
+                          <label className="text-xs font-black uppercase tracking-widest text-slate-400">Your Name</label>
                           <Input
                             placeholder="e.g. Sarah Jenkins"
                             value={formData.name}
                             onChange={(e) => handleInputChange("name", e.target.value)}
-                            className={`h-11 ${errors.name ? "border-destructive focus-visible:ring-destructive" : "border-slate-200"}`}
+                            className={`h-11 font-bold rounded-xl bg-white/60 focus-visible:ring-primary ${errors.name ? "border-destructive focus-visible:ring-destructive" : "border-slate-200"}`}
                           />
-                          {errors.name && <p className="text-xs text-destructive font-semibold">{errors.name}</p>}
+                          {errors.name && <p className="text-xs text-destructive font-bold">{errors.name}</p>}
                         </div>
 
                         {/* Email */}
-                        <div className="space-y-2">
-                          <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Your Email Address</label>
+                        <div className="space-y-2.5">
+                          <label className="text-xs font-black uppercase tracking-widest text-slate-400">Your Email Address</label>
                           <Input
                             placeholder="e.g. sarah@example.com"
                             value={formData.email}
                             onChange={(e) => handleInputChange("email", e.target.value)}
-                            className={`h-11 ${errors.email ? "border-destructive focus-visible:ring-destructive" : "border-slate-200"}`}
+                            className={`h-11 font-bold rounded-xl bg-white/60 focus-visible:ring-primary ${errors.email ? "border-destructive focus-visible:ring-destructive" : "border-slate-200"}`}
                           />
-                          {errors.email && <p className="text-xs text-destructive font-semibold">{errors.email}</p>}
+                          {errors.email && <p className="text-xs text-destructive font-bold">{errors.email}</p>}
                         </div>
 
                         {/* Subject */}
-                        <div className="space-y-2">
-                          <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Reason for contacting</label>
+                        <div className="space-y-2.5">
+                          <label className="text-xs font-black uppercase tracking-widest text-slate-400">Reason for contacting</label>
                           <select
                             value={formData.subject}
                             onChange={(e) => handleInputChange("subject", e.target.value)}
-                            className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none border-slate-200"
+                            className="flex h-11 w-full rounded-xl border border-slate-200 bg-white/60 px-3.5 py-2 text-sm font-bold text-slate-800 ring-offset-background focus-visible:outline-none cursor-pointer hover:border-slate-300"
                           >
                             <option value="general">General Inquiry</option>
                             <option value="quotes">Quote Help</option>
@@ -176,25 +176,25 @@ export default function Contact() {
                         </div>
 
                         {/* Message */}
-                        <div className="space-y-2">
-                          <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Your Message</label>
+                        <div className="space-y-2.5">
+                          <label className="text-xs font-black uppercase tracking-widest text-slate-400">Your Message</label>
                           <textarea
                             rows={5}
                             placeholder="How can we assist you?"
                             value={formData.message}
                             onChange={(e) => handleInputChange("message", e.target.value)}
-                            className={`flex w-full rounded-md border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all ${
-                              errors.message ? "border-destructive focus-visible:ring-destructive" : "border-slate-200"
+                            className={`flex w-full rounded-xl border bg-white/60 px-3.5 py-2 text-sm font-bold text-slate-800 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all ${
+                              errors.message ? "border-destructive focus-visible:ring-destructive" : "border-slate-200 hover:border-slate-300 focus:border-primary"
                             }`}
                           />
-                          {errors.message && <p className="text-xs text-destructive font-semibold">{errors.message}</p>}
+                          {errors.message && <p className="text-xs text-destructive font-bold">{errors.message}</p>}
                         </div>
 
                         {/* Submit Button */}
                         <Button 
                           type="submit" 
                           disabled={isSubmitting} 
-                          className="w-full font-bold py-6 text-base flex justify-center gap-2 group"
+                          className="w-full font-bold py-6.5 text-base bg-gradient-to-r from-primary to-secondary text-white border-0 flex justify-center gap-2 rounded-xl shadow-lg shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer group"
                         >
                           {isSubmitting ? (
                             <>
@@ -217,16 +217,16 @@ export default function Contact() {
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ type: "spring", stiffness: 100 }}
                       >
-                        <div className="h-16 w-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-sm">
-                          <CheckCircle className="h-10 w-10" />
+                        <div className="h-16 w-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                          <CheckCircle className="h-10 w-10 stroke-[2.5]" />
                         </div>
                         <div className="space-y-2">
-                          <h2 className="text-2xl font-black text-foreground">Message Sent Successfully!</h2>
-                          <p className="text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
+                          <h2 className="text-2.5xl font-black text-foreground tracking-tight">Message Sent Successfully!</h2>
+                          <p className="text-sm text-slate-600 font-bold max-w-sm mx-auto leading-relaxed">
                             Thank you for reaching out. A support ticket has been generated, and an agent will follow up with you shortly via email.
                           </p>
                         </div>
-                        <Button variant="outline" onClick={() => setIsSubmitted(false)} className="font-bold">
+                        <Button variant="outline" onClick={() => setIsSubmitted(false)} className="font-bold rounded-xl border-slate-200 hover:bg-slate-50 cursor-pointer">
                           Send Another Message
                         </Button>
                       </motion.div>
